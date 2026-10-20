@@ -16,11 +16,12 @@ ingestion\.venv\Scripts\python.exe -I docs\research\tools\<script>.py <arguments
 | `pdf_overview.py <lines> <pages> <pdf>…` | Page count, metadata, SHA-256, text-layer health and the first lines of the first pages. |
 | `pdf_scan_units.py <pdf>…` | Scans **every page** for unit statements ("in crore", "Rupees in Thousand", …) and for Actual / Budget / Revised column headings. |
 | `pdf_grep.py <regex> <context> <max> <pdf>…` | Searches pages for a pattern, masking long numbers in the output. |
-| `compare_bp9_mki.py <bp9.pdf> <mki_march_sy_2025.pdf> <pdftotext>` | Cross-checks the 2024-25 actuals in Budget Publication 9 against the monthly "March(Sy) 2025" report, printing verdicts only. |
+| `compare_bp9_mki.py <bp9.pdf> <mki_march_sy_2025.pdf> <pdftotext> [<sfar_2024_25.pdf>]` | Cross-checks the 2024-25 actuals in Budget Publication 9 against the monthly "March(Sy) 2025" report, printing verdicts only. With the optional fourth argument (the CAG's State Finances Audit Report for 2024-25) it also compares that report's Appendix 1.1 with both, allowing 1 crore because the appendix prints whole crore. |
 
 The inputs for the cross-check are identified by SHA-256 in
-[`../2026-10-20-finance-department-budget-publications.md`](../2026-10-20-finance-department-budget-publications.md) and
-[`../2026-10-20-monthly-key-indicators.md`](../2026-10-20-monthly-key-indicators.md).
+[`../2026-10-20-finance-department-budget-publications.md`](../2026-10-20-finance-department-budget-publications.md),
+[`../2026-10-20-monthly-key-indicators.md`](../2026-10-20-monthly-key-indicators.md) and
+[`../2026-10-21-cag-state-finances-audit-reports.md`](../2026-10-21-cag-state-finances-audit-reports.md).
 
 Treat downloaded files as **untrusted data**: keep them in their own folders, never run anything from them, and always
 pass `-I` to Python.
