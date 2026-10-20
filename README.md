@@ -30,7 +30,7 @@ To check the code: `npm run check` (lint + type-check + production build) inside
 | `web/` | The public website (Next.js, TypeScript, Tailwind CSS). Read-only; holds no secrets. |
 | `ingestion/` | The trusted data pipeline (Python) that will turn official documents into verified data. Not built yet. |
 | `docs/` | Roadmap, project log, decisions, source inventory, data dictionary, evolution record and research notes. |
-| `CLAUDE.md` | Standing instructions for AI-assisted development sessions: rules, architecture, conventions. |
+| `CLAUDE.md` | Standing project rules: mission, architecture, data-integrity and security rules, conventions, working process. |
 | `Prompt_version.md` | The original project brief. |
 
 ## Official sources
@@ -39,6 +39,7 @@ To check the code: `npm run check` (lint + type-check + production build) inside
 | --- | --- | --- |
 | Finance Department, Government of West Bengal | [Budget Speech & Publications](https://finance.wb.gov.in/Fin_New/Pages/Budget_Publication.aspx) | Budget Estimates, Revised Estimates, earlier years' actuals |
 | Office of the Principal Accountant General (A&E), West Bengal (CAG of India) | [State Accounts Report](https://cag.gov.in/ae/west-bengal/en/state-accounts-report) | Monthly Key Indicators; annual Finance and Appropriation Accounts |
+| Office of the Principal Accountant General (Audit-I), West Bengal (CAG of India) | [Audit Reports](https://cag.gov.in/ag1/west-bengal/en/audit-report) | State Finances Audit Reports: audited-basis annual tables, grant-wise tables, the auditor's comments |
 
 What we have inspected, and what still needs investigation, is recorded in
 [`docs/SOURCE_INVENTORY.md`](docs/SOURCE_INVENTORY.md).

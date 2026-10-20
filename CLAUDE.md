@@ -59,8 +59,9 @@ Official PDF/XLSX ──► ingestion/ (trusted, maintainer-run) ──► verif
 ## Financial-data integrity rules
 
 1. **Official sources only.** Use the publications listed in `docs/SOURCE_INVENTORY.md` (Finance Department,
-   Government of West Bengal; Principal Accountant General (A&E), West Bengal / CAG). Secondary sources
-   (news, analyses, compilations) may guide research but never feed a published figure.
+   Government of West Bengal; Principal Accountant General (A&E), West Bengal / CAG; the CAG's State Finances Audit
+   Reports, PAG (Audit-I)). Secondary sources (news, analyses, compilations, AI-generated research) may guide research
+   but never feed a published figure; re-check every claim against the official document first (D-018).
 2. **Never fabricate** data, source URLs, document contents, department names, totals or verification results.
    No sample or placeholder numbers in the UI. Synthetic test fixtures must be marked `SYNTHETIC` and must never
    reach production data paths.
@@ -85,6 +86,11 @@ Official PDF/XLSX ──► ingestion/ (trusted, maintainer-run) ──► verif
     government, no commentary on parties or politicians.
 11. **Honest reporting of work:** never claim a source was inspected, data verified, or a test passed unless it was
     actually done — and record it in `docs/PROJECT_LOG.md`.
+12. **Stocks are not flows.** A balance at a date (debt outstanding, deposit-account balances, outstanding
+    certificates) is stored with an `as_at` date and is never added to, or compared with, a period's flow without a
+    label. Figures from different years are never summed into one headline (D-021).
+13. **Attribute audit observations; do not adjudicate.** Repeat what an audit report says in its own words, attributed
+    to the named report and paragraph. Add no intent, legality or motive that the report does not state (D-019).
 
 ## Security rules
 
@@ -95,6 +101,7 @@ Official PDF/XLSX ──► ingestion/ (trusted, maintainer-run) ──► verif
 - When Supabase arrives: Row Level Security on every table; the public role may read published views only.
 - Downloaded government files are untrusted data: keep them under `data/raw/` (git-ignored), never execute them,
   parse them only with libraries.
+- Read public documents and pages only. Never log in to, scrape or probe the state's transaction systems (D-022).
 - Add dependencies only when needed; keep lockfiles committed; review `npm audit` and record accepted risks in
   `docs/DECISIONS.md`.
 - Security headers are set in `web/next.config.ts`; a Content-Security-Policy is planned.
@@ -139,7 +146,8 @@ Official PDF/XLSX ──► ingestion/ (trusted, maintainer-run) ──► verif
    - `docs/EVOLUTION.md` — then → now → next (what we believed, what we learned, what comes next);
    - `docs/ROADMAP.md` — milestone status;
    - `web/src/lib/evolution.ts` — the public timeline, if a milestone changed.
-6. Commit with clear messages. Push only when the owner asks.
+6. Commit with clear, plain-language messages (a short imperative subject and a brief body; no trailer lines). Push
+   only when the owner asks.
 
 ## Commands
 

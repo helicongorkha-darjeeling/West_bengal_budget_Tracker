@@ -7,7 +7,7 @@
 - **How they were found:** from the citations in an unofficial research file supplied by the owner (reviewed in
   [`2026-10-21-third-party-research-file-review.md`](2026-10-21-third-party-research-file-review.md)). Everything below
   was then checked against the CAG's own pages and files; nothing here rests on that file.
-- **Method:** opened the report listing (two of its eight result pages) and three report pages; downloaded **nine PDFs**,
+- **Method:** opened the report listing (two of its eight result pages) and seven report pages; downloaded **nine PDFs**,
   hashed them, counted pages and dumped the text of every page; searched for the passages and tables described below;
   **rendered four pages to images and read them** (cover, Appendix 1.1, Appendix 2.9, glossary); ran a cross-check
   against two documents already inspected. The tools are in [`tools/`](tools/).
@@ -170,7 +170,7 @@ Where this project ever repeats such findings, it quotes and attributes them (de
 
 | Time | What | Result |
 | --- | --- | --- |
-| 19:22–19:24 | Report pages 125756, 125757, 125754 and listing page 1 | HTTP 200 each |
+| 19:22–19:24 | Report pages 22856 (the 2014-15 report, cited by the file; used only to see where files are hosted), 125756, 125757, 125754, and listing page 1 | HTTP 200 each |
 | 19:37 | Report pages 125750, 125751, 115760 (to confirm which report each id is) | HTTP 200 each; file names and dates read from the pages |
 | 19:23 | Chapter files of SFAR 2023-24, 2022-23 and 2021-22 (CDN host) | HTTP 200, `%PDF-` |
 | 19:25 | SFAR 2024-25 full report and front matter | HTTP 200, `%PDF-` |

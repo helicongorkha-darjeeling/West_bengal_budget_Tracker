@@ -107,8 +107,8 @@ Format: **Decision** · **Why** · **Trade-off / revisit when**.
 ## D-014 · 2026-10-20 · Python 3.15.0 accepted; project environment at `ingestion/.venv`
 
 - **Decision:** Use the Python 3.15.0 the owner installed, with a virtual environment inside `ingestion/` (git-ignored),
-  instead of asking for the 3.13 I had recommended.
-- **Why:** My worry was that a brand-new Python might lack prebuilt packages. We tested rather than assumed: pandas,
+  instead of the 3.13 first recommended.
+- **Why:** The concern was that a brand-new Python might lack prebuilt packages. We tested rather than assumed: pandas,
   numpy, pdfplumber, openpyxl, pytest and pypdfium2 all installed as prebuilt wheels and import correctly. The one
   failure ("DLL load failed … filename too long") came from a throwaway test folder buried in a very deep path, not from
   Python 3.15.
@@ -139,6 +139,69 @@ Format: **Decision** · **Why** · **Trade-off / revisit when**.
 - **Trade-off:** slower, so we limit it to the pages that determine meaning (not every table row — those are reconciled by
   arithmetic instead).
 
+## D-018 · 2026-10-21 · Unofficial research is a source of leads, never of figures
+
+- **Decision:** A compilation, analysis or summary from anyone other than the official publisher — AI-generated research,
+  independent budget analyses, news — may tell us where to look. Every claim is re-checked against the official document
+  before it is written into our docs, and no figure from such a source is published. The check and its outcome are recorded.
+- **Why:** The first compilation we reviewed (note of 2026-10-21) had mostly accurate numbers — 46 of 58 checked figures
+  matched the chapters it cited — but also a one-scheme figure shown as a total, stocks added to flows, a stronger claim
+  than its source made, out-of-date years and links to the wrong host. Its most useful content, the pointer to the CAG's
+  State Finances Audit Reports, could only be used after verification.
+- **Trade-off:** slower than copying; in return every fact in our docs traces to an official page.
+
+## D-019 · 2026-10-21 · Quote and attribute audit observations; never strengthen them
+
+- **Decision:** When the site or the docs repeat what an audit report says, we attribute it to the named report and
+  paragraph, use its own words or a close neutral paraphrase, and state the period. We add no intent, legality or motive
+  that the report does not state, and we do not turn an outstanding balance into a claim about what happened to the money.
+  Where the report itself uses strong language, we may quote it, attributed.
+- **Why:** Political neutrality (principle 4) and accuracy. In the review, "not furnished to Audit … though called for"
+  became "refused", "irregular adjustments" became "fraudulent", and a balance "pending reconciliation" became "zero proof
+  of end-use".
+- **Applies to:** any future audit-notes feature (`DATA_DICTIONARY.md` §11).
+
+## D-020 · 2026-10-21 · Not adopted: a "Department of Government Efficiency"-style site
+
+- **Decision:** We do not build live debt or deficit "clocks", per-resident or per-household "burden" figures, a "wall of
+  receipts", lists of reform or "kill-switch" proposals, or anything styled as a government department.
+- **Why:** The project reports what official documents state; it does not prescribe policy (principle 4). Clocks and
+  burden figures need projections and population denominators from sources not yet inspected. A name or web address in the
+  style of a government body could be mistaken for an official site (see D-013).
+- **Revisit:** a per-person view and ratios to GSDP can return as clearly labelled derived measures once an official
+  population source and an official GSDP source have been inspected (roadmap backlog).
+
+## D-021 · 2026-10-21 · Stocks and flows are different kinds of figure
+
+- **Decision:** Every figure is a flow (an amount over a period) or a stock (a balance at a date). Stocks carry an `as_at`
+  date. We never add a stock to a flow, never add figures from different years into one headline, and never compare a stock
+  with a year's flow without labelling the comparison.
+- **Why:** The reviewed file compared a multi-year balance of outstanding certificates with one year's spending, and its
+  "annual flow" tile added one year's balance to other years' flows.
+- **Trade-off:** one more field in the data model (`measure_type`), added to the website vocabulary when the first stock is
+  stored.
+
+## D-022 · 2026-10-21 · Public documents only; nothing behind a login
+
+- **Decision:** The project reads only publicly published documents and pages. It does not log in to, scrape or probe the
+  state's transaction systems (the integrated financial management and e-procurement portals, for example), even if
+  credentials were offered. Where such systems hold data of public interest, the route is a formal request to the
+  department, recorded in `SOURCE_INVENTORY.md`.
+- **Why:** Data obtained behind a login cannot be re-checked by readers, and automated access to government systems carries
+  legal and security risk.
+
+## D-023 · 2026-10-21 · The CAG State Finances Audit Reports are the interim source of audited-basis annual figures
+
+- **Decision:** For years after 2020-21 — the latest Finance Accounts listed by the Accountant General (A&E) — audited-basis
+  annual figures come from the appendices of the CAG's State Finances Audit Reports, shown as "as reported in the CAG's State
+  Finances Audit Report" with report, appendix and page. If the Finance Accounts for later years appear, they take priority
+  and the audit report becomes the cross-check.
+- **Why:** The reports are the CAG's own publication, tabled in the Legislature; they name the Finance Accounts and
+  Appropriation Accounts as their core data; and for 2024-25 four main rows agree within one crore with the budget's and
+  the monthly report's figures.
+- **Trade-off / revisit when:** the report is one step away from the accounts and its structure changes every year, so each
+  needs its own mapping. Revisit when Finance Accounts for 2021-22 onwards are found.
+
 ## Open decisions (need the owner)
 
 - **Licence for derived data and for how we credit the official sources.** (The code licence is decided: MIT — the
@@ -147,4 +210,6 @@ Format: **Decision** · **Why** · **Trade-off / revisit when**.
   that one file.)
 - ~~Python installation~~ — done by the owner on 2026-10-20; see D-014.
 - **Organisational identity** for the About text (see D-013).
+- **Requests to the Accountant General (A&E):** whether to ask formally for the Finance Accounts and Appropriation
+  Accounts for 2021-22 onwards, which the audit reports use but the A&E page does not list (see D-022).
 - **Domain name** and hosting account for launch (v1.0).

@@ -26,6 +26,12 @@ particular document presents its figures, the document's own wording wins and is
 money the government holds on behalf of others. They are excluded from expenditure unless a document explicitly
 treats them otherwise.
 
+**Booked is not the same as used.** Money moved from the Consolidated Fund into a Personal Deposit account is recorded as
+expenditure at that moment. The CAG's State Finances Audit Report for 2024-25 (paragraph 3.7) says such transfers "are
+accounted for as expenditure from the Consolidated Fund of the State" and would overstate that expenditure if the money is
+not used within the financial year. Reported expenditure therefore means **money booked out of the Consolidated Fund**, not
+necessarily money delivered. We show booked expenditure as booked, and we do not describe it as delivered or used.
+
 ## 2. Financial year
 
 - The Indian government financial year runs from **1 April to 31 March**.
@@ -61,6 +67,18 @@ Budget documents also print "actuals". For a budget of year *Y* they show year *
 budget), with the budget estimate and revised estimate for *Y−1* and the budget estimate for *Y*. The documents do not
 say how final those actuals are (status **not stated**), although for the state-level rows checked they equal the
 monthly reports' closing provisional figures.
+
+### Flow and stock
+
+Every figure is either a **flow** — an amount recorded during a period (expenditure, receipts, the deficit for a year) — or a
+**stock** — a balance at a date (debt outstanding, balances in deposit accounts, utilisation certificates still
+outstanding, the cash balance). All the kinds above are flows. A stock is stored with an `as_at` date instead of a period.
+
+- Never add a stock to a flow, and never add figures from different years into one headline.
+- Never compare a stock with a year's flow without saying so on the page. (An unofficial research file compared a
+  multi-year balance of outstanding certificates with one year's revenue expenditure; see decision D-021.)
+- In the audit reports, the time-series and abstract appendices are mostly flows; the "financial position at 31 March"
+  appendix is stocks.
 
 ## 5. Accounting basis
 
@@ -137,10 +155,11 @@ Illustrative structure only — no real or sample values.
 figure
   id                    stable identifier
   measure               e.g. total_expenditure | revenue_expenditure | capital_expenditure | share_of_be_spent
+  measure_type          flow | stock                          (added to the website vocabulary with the first stock)
   figure_kind           budget_estimate | revised_estimate | monthly_actual | year_to_date_actual | annual_actual
   financial_year        start year + label, e.g. 2026 / "2026-27"
-  period_type           month | year_to_date | full_year
-  period_start, period_end
+  period_type           month | year_to_date | full_year      (flows)
+  period_start, period_end                                    (flows)  or  as_at (stocks)
   value_as_printed      text, exactly as printed
   unit_as_printed       text, exactly as printed
   value_rupees          number (normalised)
@@ -149,6 +168,17 @@ figure
   source                → the provenance fields in §8
   verification_record   who checked, when, which page, outcome
 ```
+
+## 11. Audit observations (planned)
+
+An **audit observation** is something an audit report says about the accounts — for example that information was "not
+furnished to Audit" or that a balance "could not be ascertained". It is not a figure and never changes one. If the site
+shows one, the record keeps: report number and title; chapter and paragraph; PDF page and printed page; the period it
+concerns; the exact words quoted (or a close, neutral paraphrase marked as one); retrieval date; SHA-256 of the file.
+
+Wording rules (decision D-019): attribute every observation to the report ("the CAG's report says…"); use the report's own
+verbs; add no intent, legality or motive that the report does not state; never turn an outstanding balance into a claim
+about what was done with the money. Where a report itself uses strong language, quote it and attribute it.
 
 ## Source-specific notes
 
@@ -195,3 +225,21 @@ Evidence: [`research/2026-10-20-finance-department-budget-publications.md`](rese
 | Total expenditure | Budget at a Glance: revenue + capital, where the capital block **includes loans and advances and repayment of loans**. For 2024-25 its actuals equal the monthly closing figures row by row, and its total exceeds the monthly report's total by exactly loans and advances plus repayment of loans. |
 | Gross vs net | Demands for Grants are **gross**: Gross Expenditure, then "Deduct – Recoveries", then Net Expenditure; Voted and Charged shown separately. |
 | Department vs grant | BP-3 is by **department** (58, each with a two-letter code); BP-11 onward are by **Demand number** (grant). The mapping between them is not stated in the documents examined and must be built. |
+
+### State Finances Audit Reports (PAG (Audit-I) West Bengal, CAG of India) — observed 2026-10-20 (single observer)
+
+Evidence: [`research/2026-10-21-cag-state-finances-audit-reports.md`](research/2026-10-21-cag-state-finances-audit-reports.md).
+
+| Concept | How these reports present it |
+| --- | --- |
+| Accounting status | Audit reports whose tables are labelled "Source: Finance Accounts" or "Source: Appropriation Accounts"; the report says those accounts are audited by the PAG (Audit-I) and certified by the CAG → our status **Audited**, shown as "as reported in the CAG's State Finances Audit Report" with report, appendix and page — never as "Finance Accounts" (decision D-023). |
+| Reporting period | Full financial years: five-year and ten-year series, and two-year abstracts. |
+| Unit | "(₹ in crore)". Whole numbers in the time-series appendices; two decimals in the grant-wise tables. |
+| Number format | Two-digit Indian grouping. Negative values print as "-" in Appendix 1.1 but "(-)" in Appendix 1.4. |
+| Total expenditure | Revenue + capital + disbursement of loans and advances; repayment of public debt is a separate row. The Accounts at a Glance pattern, not the monthly reports'. |
+| Gross vs net | The grant-wise expenditure it takes from the Appropriation Accounts is **gross** (before recoveries). |
+| Booked vs adjusted | Time-series figures are as booked in the accounts (they equal the monthly and budget figures); the auditor's reclassifications appear as commentary and in separate appendices. |
+| Denominators | GSDP figures carry their own status — "Final", "First Revised" or "Provisional" Estimates. |
+| Coverage | One report per year, 2020-21 to 2024-25. The grant-wise table lists only the 53 grants with overall savings. |
+| Structure | Chapter and appendix numbers change from year to year; map each report separately. |
+| Observations | Attributive, hedged wording; quoted and attributed, never strengthened (decision D-019). |

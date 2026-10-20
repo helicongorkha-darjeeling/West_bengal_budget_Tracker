@@ -10,8 +10,9 @@ Which official sources we use, what we have actually inspected, and what still n
 
 Detailed evidence for each inspection lives in [`docs/research/`](research/).
 
-_Last updated: 2026-10-20 (listing pages, Monthly Key Indicators, Finance Accounts / Accounts at a Glance and the main
-Finance Department budget publications inspected; Appropriation Accounts and the remaining budget volumes still to do)._
+_Last updated: 2026-10-21 (listing pages, Monthly Key Indicators, Finance Accounts / Accounts at a Glance, the main Finance
+Department budget publications and the CAG's State Finances Audit Reports inspected; Appropriation Accounts and the
+remaining budget volumes still to do)._
 
 ---
 
@@ -102,7 +103,7 @@ by a second observer.
 ### ✅ Verified by inspection — Monthly Key Indicators documents (2026-10-20)
 
 Evidence, hashes and exact labels: [`research/2026-10-20-monthly-key-indicators.md`](research/2026-10-20-monthly-key-indicators.md).
-Items marked ✅✅ there were observed by an inspector and independently re-checked; the summary below uses only those.
+Items marked ✅✅ there were observed in a first pass and independently re-checked; the summary below uses only those.
 
 - **Coverage:** monthly reports from **April 2008 to June 2026** — 2021-22 onwards on the main page, 2008-09 to
   2020-21 in the archive view (2008-09 and 2009-10 as Flash `.swf` files; PDFs from 2010-11).
@@ -125,7 +126,7 @@ Items marked ✅✅ there were observed by an inspector and independently re-che
 ### ✅ Verified by inspection — Finance Accounts and Accounts at a Glance, 2020-21 (2026-10-20)
 
 Evidence: [`research/2026-10-20-finance-accounts-and-accounts-at-a-glance.md`](research/2026-10-20-finance-accounts-and-accounts-at-a-glance.md).
-An inspector's findings, then re-checked by re-downloading the files (size and SHA-256 identical) and **rendering the
+A first-pass inspection, then re-checked by re-downloading the files (size and SHA-256 identical) and **rendering the
 pages to images and reading them**. The summary below uses only what was re-checked.
 
 - **Availability:** listed only in the **Archive** view of the page — Finance Accounts 19 files (2009-10 to 2020-21),
@@ -148,7 +149,55 @@ pages to images and reading them**. The summary below uses only what was re-chec
 
 - **Appropriation Accounts** — the expected source of grant-wise (gross) expenditure. Not yet opened.
 - Whether newer Finance Accounts exist anywhere official; what the empty "FA&AA data" tab is for.
-- The finance-accounts claims marked ✅ (inspector only) in the research note.
+- The finance-accounts claims marked ✅ (first pass only) in the research note.
+
+## Source C — Office of the Principal Accountant General (Audit-I), West Bengal (CAG of India): audit reports
+
+- **Page:** Audit Reports — <https://cag.gov.in/ag1/west-bengal/en/audit-report>
+- **Role for this project (confirmed in part):** the **State Finances Audit Reports** (SFARs) carry audited-basis annual
+  tables for years after 2020-21, grant-wise budget-versus-spending tables, and the auditor's comments on how reliable the
+  accounts are. The other reports on the page (compliance, performance, commercial) are context only.
+- **How we use it:** wherever a figure comes from here it is shown as "as reported in the CAG's State Finances Audit
+  Report" with the report, appendix and page — never as "Finance Accounts" (decision D-023).
+
+### ✅ Verified by inspection (2026-10-20 19:22–19:37 UTC; single observer)
+
+Evidence: [`research/2026-10-21-cag-state-finances-audit-reports.md`](research/2026-10-21-cag-state-finances-audit-reports.md)
+(hashes, page counts, tables, wording). Listing pages 1–2 of 8, seven report pages and nine PDFs examined; four pages read as
+rendered images; one cross-check run. Not yet re-checked by a second observer.
+
+- **Listing:** HTTP 200; pagination to page 8. State Finances Audit Reports are listed for **2020-21, 2021-22, 2022-23,
+  2023-24 and 2024-25** (Report No. 2 of 2026). The last four were **tabled together on 25 July 2026**; the 2020-21 report on
+  25 March 2022 (dates as printed on each report's page).
+- **Files** are served from the same delivery host as the monthly reports
+  (`d7i5wg8xwe4hf.cloudfront.net/uploads/download_audit_report/…`); addresses of the form `cag.gov.in/uploads/…` return
+  404. Always take the address from the report's own page.
+- **Basis and status:** each report says the Finance Accounts and Appropriation Accounts "constitute the core data" and
+  are "independently audited by the Principal Accountant General (Audit-I) and certified by the Comptroller and Auditor
+  General of India". Its appendices are labelled "Source: Finance Accounts" (time series, abstract of receipts and
+  disbursements) or "Source: Appropriation Accounts" (grant-wise tables).
+- **Unit and format:** "(₹ in crore)"; whole numbers in the time-series appendices, two decimals in the grant-wise tables;
+  two-digit Indian digit grouping.
+- **Coverage of the 2024-25 report:** a five-year time series (2020-21 to 2024-25), ten-year trends, a two-year abstract of
+  receipts and disbursements, the financial position at 31 March 2025 (balances), grant-wise utilisation for **53 grants**
+  with overall savings (gross of recoveries), and appendices on outstanding utilisation certificates, abstract contingent
+  bills, personal deposit accounts, Minor Head 800 and misclassification.
+- **"Total expenditure"** = revenue + capital + loans and advances disbursed; repayment of public debt is a separate row —
+  the Accounts at a Glance pattern, not the monthly reports'.
+- **Deposit-account transfers (paragraph 3.7):** the report says such transfers "are accounted for as expenditure from the
+  Consolidated Fund of the State" and could overstate expenditure if the money is not used in the year.
+- **Cross-check for 2024-25:** revenue receipts, revenue expenditure, capital expenditure and loans and advances are
+  **consistent within one crore** with both the monthly "March(Sy) 2025" report and the budget's "Actual 2024-25"
+  (`research/tools/compare_bp9_mki.py`).
+- **Structure changes every year** (three chapters in 2024-25, four in 2023-24; appendix numbers differ), so each report
+  needs its own mapping.
+
+### ⏳ Pending (document-level inspection)
+
+- The 2024-25 chapters beyond the passages cited; the appendices of earlier reports; whether any report figure differs from
+  the Finance Accounts themselves (not seen for 2021-22 onwards).
+- Listing pages 3–8; the compliance, performance and commercial reports.
+- A second observer's check.
 
 ---
 
@@ -165,25 +214,41 @@ pages to images and reading them**. The summary below uses only what was re-chec
 5. How do the 2026-27 interim budget and the full 2026-27 budget differ in what they present?
 6. Which document gives department-wise (grant-wise) **actual** expenditure in a form we can reconcile with budget
    figures? (Not the MKI, and not the Finance Accounts statements — most likely the Appropriation Accounts, not yet
-   inspected.)
+   inspected. **Partly answered 2026-10-21:** the CAG's State Finances Audit Report for 2024-25 gives budget and expenditure
+   for the 53 grants with overall savings in its Appendix 2.9, "Source: Appropriation Accounts". The complete Appropriation
+   Accounts remain to be inspected.)
 7. Why were no July–September 2026 MKIs listed on 2026-10-20?
 8. Are Finance Accounts or Accounts at a Glance for **2021-22 onwards** published anywhere official? None is listed
-   on the regional page or the central CAG portal's West Bengal view (archive included) as of 2026-10-20.
+   on the regional page or the central CAG portal's West Bengal view (archive included) as of 2026-10-20. The CAG's State
+   Finances Audit Reports for 2021-22 to 2024-25 — tabled together on 25 July 2026 — do carry Finance Accounts–based
+   annual tables, so audited-basis totals exist; the A&E office may post the accounts later (the 2020-21 accounts were laid
+   on the same day as the 2020-21 report). To be rechecked.
 9. What is the accounting status of the "Actual 2024-2025" columns in the budget documents? They match the monthly
-   closing figures, but nothing printed says "provisional" or "audited".
+   closing figures, and — for the four main rows — the CAG report's Finance Accounts–based table within one crore, so they
+   appear to be the certified figures; but nothing printed in the budget documents says "provisional" or "audited".
 10. How do the Finance Department's departments map to Demand numbers (grants), and is the mapping stable across years?
 11. Is BP-3's no-decimal-point number format (last two digits as decimals) consistent on all 397 pages?
+12. Does any figure in a State Finances Audit Report differ from the Finance Accounts it cites? (The Finance Accounts for
+    2021-22 onwards have not been seen; for 2024-25 four rows agree within one crore with two other documents.)
+13. Where is the complete grant-wise list? The audit report's Appendix 2.9 omits grants with overall excesses.
+14. The audit reports' chapter and appendix numbers change from year to year. Each report needs its own mapping to the
+    tables we use.
 
 ## Candidates not yet inspected (no claims made)
 
-These may help later for cross-checking or context. None has been inspected, and none may feed a published figure
-unless it is added above as an inspected official source.
+These may help later for cross-checking or context. None has been inspected as a source of figures, and none may feed a
+published figure unless it is added above as an inspected official source.
 
-- CAG audit reports on the finances of the Government of West Bengal (cag.gov.in).
-- The West Bengal IFMS portal (wbifms.gov.in) — linked from the Finance Department site; the links seen lead to a
-  login page.
-- Secondary compilations and analyses (for example the Reserve Bank of India's studies of state budgets). Orientation
-  only, never a source for published figures.
+- The other CAG reports on the Audit-I page (compliance, performance, commercial) — context for audit observations; two
+  were opened only to confirm one reference each.
+- The West Bengal IFMS portal (`wbifms.gov.in`, linked from the Finance Department site) and the e-procurement portal
+  (`wbtenders.gov.in`): both respond (HTTP 200, 2026-10-20), but the transaction systems sit behind logins and are out of
+  scope (decision D-022). Public pages only, if ever.
+- Official analytical papers named by an unofficial research file; they respond with PDF files but were **not opened**:
+  NITI Aayog, "A Macro and Fiscal Landscape of the State of West Bengal" (July 2025); a 16th Finance Commission study of
+  off-budget borrowings; the Department of Economic Affairs page of Union Demands for Grants.
+- Independent analyses (PRS Legislative Research budget analyses for West Bengal, including 2026-27; CBGA) and the
+  Reserve Bank of India's studies of state budgets. Orientation only, never a source for published figures.
 
 ## Inspection log
 
@@ -191,8 +256,10 @@ unless it is added above as an inspected official source.
 | --- | --- | --- | --- |
 | 2026-10-20 07:58 | Finance Department listing page | `curl` download, link extraction | HTML saved; SHA-256 `fb29a942c72a3e84ac4293e797e5dc335e65c1cdb1d018673d68427c71ab150a` (page content changes with each load because of ASP.NET state, so the hash identifies our copy only) |
 | 2026-10-20 07:58 | CAG / PAG (A&E) West Bengal listing page | `curl` download, link extraction | HTML saved; SHA-256 `74bbb7f0b5eb4d9a571e8af10ffd6b10d7961cc6ffc6483548e06d483494a6ce` |
-| 2026-10-20 08:05–08:45 | Monthly Key Indicators: 6 PDFs, 1 Google Sheet, main and archive listings | Inspector agent, then independent re-download and re-check of key claims | [`research/2026-10-20-monthly-key-indicators.md`](research/2026-10-20-monthly-key-indicators.md) |
-| 2026-10-20 08:05–08:42 and 13:58 | Finance Accounts Vol I and II 2020-21, Accounts at a Glance 2020-21, FA 2019-20 sample; archive listings | Inspector agent (08:xx); my own re-download, page counts, and page-image reading (13:58) | [`research/2026-10-20-finance-accounts-and-accounts-at-a-glance.md`](research/2026-10-20-finance-accounts-and-accounts-at-a-glance.md) |
+| 2026-10-20 08:05–08:45 | Monthly Key Indicators: 6 PDFs, 1 Google Sheet, main and archive listings | First-pass inspection, then independent re-download and re-check of key claims | [`research/2026-10-20-monthly-key-indicators.md`](research/2026-10-20-monthly-key-indicators.md) |
+| 2026-10-20 08:05–08:42 and 13:58 | Finance Accounts Vol I and II 2020-21, Accounts at a Glance 2020-21, FA 2019-20 sample; archive listings | First-pass inspection (08:xx); re-download, page counts and page-image reading (13:58) | [`research/2026-10-20-finance-accounts-and-accounts-at-a-glance.md`](research/2026-10-20-finance-accounts-and-accounts-at-a-glance.md) |
 | 2026-10-20 13:5x | Finance Department: HTTP status and size of all 29 PDFs linked from the 2026-27 page | `curl -I` for each file | All returned HTTP 200 `application/pdf`; 25 files are 0.6–3.5 MB, the largest 44 MB; total about 204 MB |
-| 2026-10-20 14:01–14:09 UTC | Finance Department: BP-1, 3, 4, 5, 6, 7, 9 and one Demands for Grants volume (BP-11) | My own download, SHA-256, page counts, every-page text scan, page-image reading, cross-check against the monthly report | [`research/2026-10-20-finance-department-budget-publications.md`](research/2026-10-20-finance-department-budget-publications.md) |
-| not yet done | Appropriation Accounts; BP-10 and BP-12 to BP-31; interim 2026-27 set; earlier years | — | — |
+| 2026-10-20 14:01–14:09 UTC | Finance Department: BP-1, 3, 4, 5, 6, 7, 9 and one Demands for Grants volume (BP-11) | Download, SHA-256, page counts, every-page text scan, page-image reading, cross-check against the monthly report | [`research/2026-10-20-finance-department-budget-publications.md`](research/2026-10-20-finance-department-budget-publications.md) |
+| 2026-10-20 19:21–19:23 | Links cited by an unofficial research file: 20 of its 49 citations plus four portal addresses | Header-only requests (`curl`); 15 answered 200, 4 returned 404 (direct CAG file paths on the wrong host), 2 refused (403), 3 gave no answer | [`research/2026-10-21-third-party-research-file-review.md`](research/2026-10-21-third-party-research-file-review.md) |
+| 2026-10-20 19:22–19:37 | CAG (Audit-I) West Bengal audit-report listing (pages 1–2), seven report pages, nine PDFs (State Finances Audit Report 2024-25 in full and 2023-24, 2022-23, 2021-22 chapters; performance and compliance Report No. 5 of 2025 in part; index of Report No. 5 of 2021) | `curl` download, SHA-256, page counts, every-page text dump and search, four pages read as images, cross-check script | [`research/2026-10-21-cag-state-finances-audit-reports.md`](research/2026-10-21-cag-state-finances-audit-reports.md) |
+| not yet done | Appropriation Accounts; BP-10 and BP-12 to BP-31; interim 2026-27 set; earlier years; listing pages 3–8 of the CAG audit reports | — | — |

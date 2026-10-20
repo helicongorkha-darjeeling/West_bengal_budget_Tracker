@@ -88,9 +88,30 @@ holds the reasoning. The website's "How this tracker is evolving" section is the
   number.
 - Then: a PDF can be read as text. Now: some are stored with a **shifted character encoding** — extraction returns
   gibberish (the raw text for "Table" comes out as "7DEOH"). We will render pages as images and read them to verify.
-- Then: the inspecting agents could only read text. Now: with Python installed, **we can look at the pages as
+- Then: the first-pass inspection could only read text. Now: with Python installed, **we can look at the pages as
   images**, which let us confirm units, dates and the certificate as printed. This is the biggest change in how we
   verify.
+
+**About audit reports and an unofficial research file (documents, observed 2026-10-21, single observer — details in
+`research/2026-10-21-cag-state-finances-audit-reports.md` and `research/2026-10-21-third-party-research-file-review.md`):**
+
+- Then: we believed audited annual figures stopped at 2020-21. Now: the Accountant General (A&E) page lists nothing later,
+  but the CAG's **State Finances Audit Reports** exist for every year up to **2024-25** — four of them tabled together on
+  25 July 2026 — and their appendices carry Finance Accounts–based tables, grant-wise tables and the auditor's comments.
+- Then: provisional monthly figures might change a lot once the year is certified. Now: for 2024-25, four main rows in the
+  audit report agree with the monthly closing figures and the budget's "Actual" column within one crore — our first
+  provisional-versus-audited comparison for a recent year (one year, four rows, whole-crore resolution).
+- Then: "expenditure" in the accounts meant money used. Now: the CAG's report says transfers into deposit accounts are
+  accounted for as expenditure when they leave the Consolidated Fund, and could overstate it if the money is not used in
+  the year. We will say "reported" (booked) expenditure.
+- Then: a balance and a year's spending can be compared. Now: a balance at a date (a **stock**) and an amount over a period
+  (a **flow**) are different kinds of figure; an unofficial summary that compared them gave misleading ratios. We store and
+  label them separately.
+- Then: a research summary can be trusted if its numbers match. Now: most of its numbers did (46 of 58 checked), but a
+  one-scheme amount was presented as a total, and strong words replaced the auditor's measured ones; its links also pointed
+  at the wrong host although the documents were real. We keep the pointers and re-check every claim.
+- Then: the audit reports would share one layout. Now: chapter and appendix numbers change every year, so each report needs
+  its own mapping.
 
 **About the tools:**
 
@@ -112,11 +133,13 @@ and each section explains what will appear and where it will come from.
 ### Next
 
 - Finish the document-level inspection: the Appropriation Accounts, the remaining budget volumes (BP-10, BP-12 to
-  BP-31), the interim 2026-27 set, and a second observer's check of the budget-document findings.
+  BP-31), the interim 2026-27 set, and a second observer's check of the budget-document and audit-report findings.
 - **v0.2:** (Python is now installed) extract one Monthly Key Indicators report with a repeatable script (spreadsheet
   first, reconciled against the PDF); verify it by hand; publish four headline figures with full provenance.
-- Question to answer next: how far do the closing provisional figures ("March(Sy)") differ from the audited Finance
-  Accounts for the same year? Answerable only for 2020-21 and earlier, because that is the latest audited year listed.
+- Question to answer next: how far do the closing provisional figures ("March(Sy)") differ from the audited-basis figures
+  for the same year? A first answer exists for 2024-25 (four rows, within one crore); the 2020-21 Finance Accounts and
+  the 2021-22 to 2023-24 audit reports extend it. And: do the Finance Accounts for 2021-22 onwards exist anywhere
+  official?
 
 ---
 
@@ -126,7 +149,7 @@ and each section explains what will appear and where it will come from.
 | --- | --- | --- |
 | 0.2 | First verified report | One official monthly report extracted reproducibly, verified, and shown with source, page and status. |
 | 0.3 | Monthly history | Every available monthly report stored in a database, charted month by month with a data table. |
-| 0.4 | Audited accounts | Provisional versus audited figures side by side, showing how much the numbers moved after audit. |
+| 0.4 | Audited accounts | Provisional versus audited figures side by side, from the Finance Accounts (2020-21) and the CAG's audit reports (2021-22 to 2024-25), showing how much the numbers moved after audit. |
 | 0.5 | Department explorer | Grant-wise budgets and spending, mapped to departments with a documented, source-backed mapping. |
 | 1.0 | Public launch | Bengali interface, accessibility audit, public corrections log, deployed. |
-| Beyond | Open questions | Alerts when new reports appear? District-level spending, if official sources publish it? Downloadable verified datasets for researchers? Each will be tested against our principles before it is built. |
+| Beyond | Open questions | Alerts when new reports appear? District-level spending, if official sources publish it? Downloadable verified datasets for researchers? Attributed audit notes? A per-person view? Each will be tested against our principles before it is built (see the roadmap backlog). |
