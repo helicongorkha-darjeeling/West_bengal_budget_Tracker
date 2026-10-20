@@ -13,9 +13,9 @@ interim set. The planned four-lens review of the foundation has **not been run**
 
 ### 1. State on return
 
-- Session 1 ended while two background research workflows were running; both were stopped without final results. In this
-  session the Workflow tool is switched off, so I resumed the research **directly, as a single observer**. One finished
-  inspector result (Finance Accounts and Accounts at a Glance) was recovered from the interrupted workflow's journal.
+- Session 1 ended while two background research jobs were running; both were stopped without final results. In this
+  session the background-job tool is switched off, so the research continued **directly, as a single observer**. One
+  finished first-pass result (Finance Accounts and Accounts at a Glance) was recovered from the interrupted job's log.
 - **Git:** local `main` at `28aa85a`, remote `main` at `0d352a7` — a "Create LICENSE" commit the owner made on GitHub
   (an MIT licence, 21 lines, copyright holder shown as the GitHub username). `git fetch` then
   `git merge --ff-only origin/main`: fast-forward, nothing lost.
@@ -40,7 +40,7 @@ rendering); the v0.2 milestone itself has not started.
 ### 4. Research done this session
 
 - **Finance Accounts / Accounts at a Glance, 2020-21:** re-downloaded all three files — sizes and SHA-256 identical to the
-  inspector's; page counts 108 / 722 / 64 confirmed with a PDF library; archive listing counts per tab confirmed
+  first pass's; page counts 108 / 722 / 64 confirmed with a PDF library; archive listing counts per tab confirmed
   (19 / 12 / 13 / 0); the glyph-shifted text layer and the 541-page miscount reproduced; **seven pages rendered and read**
   (tabling date, certificate, signature page, the guide, Statement 2, a Volume II table, the highlights table).
   Written up in `docs/research/2026-10-20-finance-accounts-and-accounts-at-a-glance.md`.
@@ -66,25 +66,26 @@ rendering); the v0.2 milestone itself has not started.
 | --- | --- |
 | `npm run check` (lint + type-check + production build), run after each batch of code edits | **exit 0** every time (last run after the final copy change) |
 | axe-core scan of the production build, 1280 px and 375 px, light and dark | **0 violations** in all four; no horizontal overflow (run before the final one-line copy change to the source cards) |
-| Zero-figure scan of the served page: every number in the visible text | only version numbers, step numbers, dates and "SHA-256"; **0 monetary-looking patterns**. A first run flagged "1,000 times" in new copy (a ratio, not money); I reworded it so the check stays strict |
+| Zero-figure scan of the served page: every number in the visible text | only version numbers, step numbers, dates and "SHA-256"; **0 monetary-looking patterns**. A first run flagged "1,000 times" in new copy (a ratio, not money); the copy was reworded so the check stays strict |
 | Budget-versus-monthly cross-check (`compare_bp9_mki.py`) | revenue receipts, revenue expenditure, capital expenditure (within rounding) and loans and advances **match**; the "total expenditure" gap equals loans and advances plus repayment of loans (difference 0.00 crore) |
 
 Not tested: a second observer's re-check of the budget-document findings; BP-3's number-format reading beyond one page.
 
 ### 7. Failures, problems and corrections
 
-- **My comparison script** first reported capital expenditure as "1475 % different": it had picked up a later sector table
-  on the same page. Fixed the parser, then added a rounding tolerance of 0.005 per summed component — the "within the
+- **The comparison script** first reported capital expenditure as "1475 % different": it had picked up a later sector
+  table on the same page. Fixed the parser, then added a rounding tolerance of 0.005 per summed component — the "within the
   document's printed precision" rule from our own integrity rules.
-- My unit scanner glued one column's "Actuals" to the next column's year and produced a **false** "Actual 2025-2026" in
-  BP-9. I recognised it from the page text and discarded it; it is not in any note.
+- The unit scanner glued one column's "Actuals" to the next column's year and produced a **false** "Actual 2025-2026" in
+  BP-9. It was recognised from the page text and discarded; it is not in any note.
 - A one-line script used the wrong argument positions with `node -e` (read a directory). Fixed.
-- I used `/tmp` for a scratch file; Node on Windows resolved it elsewhere. Redone in the session scratchpad.
+- A scratch file written to `/tmp` ended up elsewhere (Node on Windows resolves that path differently). Redone in the
+  session scratchpad.
 - The package-install test showed the "filename too long" failure described above; the project environment sits at a short
   path.
-- The Finance Department server is very slow, which limited how many files I downloaded.
+- The Finance Department server is very slow, which limited how many files were downloaded.
 - **Process note:** the second commit of session 1 (`28aa85a`) was pushed on the strength of the owner's earlier request to
-  push; `CLAUDE.md` says to push only when asked. From now on I push only when asked.
+  push; `CLAUDE.md` says to push only when asked. From now on pushes happen only when the owner asks.
 
 ### Next step
 
@@ -127,8 +128,8 @@ file. It was not a Git repository. Both items were left untouched. Conclusion: a
 Both pages were saved (outside the repository) and their links extracted with a small Node script. Findings are in
 `docs/SOURCE_INVENTORY.md`.
 
-A multi-agent **document-level inspection** was started (five inspectors, each followed by an independent adversarial
-verifier that re-downloads and re-checks every claim, then a completeness critic). It was still running when this
+A **document-level inspection** was started (five first-pass inspections, each to be followed by an independent re-check
+that re-downloads and verifies every claim, then a completeness review). It was still running when this
 entry was written; its results will be recorded in `docs/research/` and in the inventory.
 
 ### 3. Website scaffold
@@ -213,9 +214,9 @@ Manager already had credentials — no sign-in was needed.
 
 ### 8. Monthly Key Indicators — document-level results
 
-The research workflow's first inspector (Monthly Key Indicators) finished: 6 PDFs, 1 Google Sheet and 3 listing views
-examined. Because the workflow runs only two agents at a time, its own verifier for this area was still queued, so the
-key claims were **re-checked independently** with fresh downloads:
+The first-pass inspection of the Monthly Key Indicators finished: 6 PDFs, 1 Google Sheet and 3 listing views examined.
+Because the research job runs only two tasks at a time, its own re-check for this area was still queued, so the key
+claims were **re-checked independently** with fresh downloads:
 
 | Re-check | Result |
 | --- | --- |
@@ -234,7 +235,7 @@ financial figures were copied into the repository.
 ### Open at time of writing
 
 - Document-level inspection of the Finance Accounts, Appropriation Accounts, Accounts at a Glance and the Finance
-  Department's budget documents (research workflow still running).
+  Department's budget documents (research job still running).
 
 ### Next step
 

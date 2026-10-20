@@ -4,12 +4,12 @@
 - **Question:** What are the annual, audited accounts published by the Principal Accountant General (A&E), West Bengal
   — which years exist, how final they are, what units and table layouts they use — and how do they relate to the
   monthly reports?
-- **Method:** An inspector agent examined four PDFs (its result was recovered from the workflow journal after the
-  session was interrupted). **I then re-checked the key claims myself**: re-downloaded the three 2020-21 documents,
-  compared size and SHA-256, counted pages, and **rendered pages to images and read them** — something the inspector
-  could not do. The workflow's own verifier never ran.
-- **Evidence levels:** ✅✅ = observed by the inspector **and** independently re-checked (visually, unless stated) ·
-  ✅ = inspector only.
+- **Method:** A first-pass inspection examined four PDFs (its result was recovered from the job's log after the
+  session was interrupted). **The key claims were then re-checked**: the three 2020-21 documents were re-downloaded, size
+  and SHA-256 compared, pages counted, and **pages rendered to images and read** — something the first pass could not
+  do. The job's own planned verification step never ran.
+- **Evidence levels:** ✅✅ = observed in the first pass **and** independently re-checked (visually, unless stated) ·
+  ✅ = first pass only.
 - **No financial figures are quoted in this note.** Number-format examples are marked *illustrative* and are not
   taken from any document.
 
@@ -22,8 +22,8 @@
 | **Accounts at a Glance** 2020-21 | "Accounts at a Glance 2020-21 Government of West Bengal" | 64 | 3,285,886 | `32d4f608ebb4cf8a735e4537ac862f93081c4740b2a00fdb04c0ef8e990a04e4` | ✅✅ |
 | Finance Accounts Vol I 2019-20 (sample) | "Finance Accounts (Volume-I) 2019-20 …" | 109 | 2,096,502 | `aa6a59c8e8b125e4df1ff5c0e8a3bea1b3b878ed2e37f7038ddbd197c124918a` | ✅ |
 
-Files are served from `https://d7i5wg8xwe4hf.cloudfront.net/uploads/state_accounts_report/`. My copies were
-retrieved 2026-10-20 at about 13:58 UTC (the inspector's at about 08:14 UTC); sizes and hashes were identical.
+Files are served from `https://d7i5wg8xwe4hf.cloudfront.net/uploads/state_accounts_report/`. The re-check copies were
+retrieved 2026-10-20 at about 13:58 UTC (the first pass's at about 08:14 UTC); sizes and hashes were identical.
 
 ## Findings
 
@@ -31,8 +31,8 @@ retrieved 2026-10-20 at about 13:58 UTC (the inspector's at about 08:14 UTC); si
 
 - On the default listing page the **Finance Accounts, Accounts at a Glance, Appropriation Accounts and "FA&AA data"
   tabs are empty**. Documents appear only under the **Archive** view: Finance Accounts **19 files** (2009-10 to
-  2020-21), Accounts at a Glance **12**, Appropriation Accounts **13**, "FA&AA data" **none** (my own count).
-- **The most recent Finance Accounts and Accounts at a Glance listed are for 2020-21.** The inspector found the same on
+  2020-21), Accounts at a Glance **12**, Appropriation Accounts **13**, "FA&AA data" **none** (counted again at the re-check).
+- **The most recent Finance Accounts and Accounts at a Glance listed are for 2020-21.** The first pass found the same on
   the central CAG portal's West Bengal view ✅. As of 2026-10-20 nothing for 2021-22 or later is listed on either.
 - "Not listed" is not the same as "not published" — see open questions.
 

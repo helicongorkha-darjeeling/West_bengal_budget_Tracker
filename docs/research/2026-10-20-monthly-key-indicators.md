@@ -3,12 +3,12 @@
 - **Date:** 2026-10-20
 - **Question:** What are the monthly expenditure reports published by the Principal Accountant General (A&E),
   West Bengal — their periods, accounting status, units and table structure?
-- **Method:** An inspector agent downloaded and examined 6 PDFs, 1 spreadsheet and 3 listing views (text layer via
+- **Method:** A first-pass inspection downloaded and examined 6 PDFs, 1 spreadsheet and 3 listing views (text layer via
   `pdftotext`, PDF objects via a read-only script). The key claims were then **re-checked independently** by fresh
-  downloads into a separate folder. The workflow's own adversarial verifier for this area had not run yet when this
+  downloads into a separate folder. The job's own planned verification step for this area had not run yet when this
   note was written.
-- **Evidence levels:** ✅✅ = observed by the inspector **and** independently re-checked · ✅ = observed by the
-  inspector only (pending the verifier).
+- **Evidence levels:** ✅✅ = observed in the first pass **and** independently re-checked · ✅ = observed in the
+  first pass only (pending the verification step).
 - **No financial figures are quoted in this note on purpose:** nothing has been through the verification pipeline yet.
 
 ## Documents examined
@@ -43,7 +43,7 @@ document — nothing says audited, certified or "subject to audit".
 
 ### Unit ✅✅
 
-**"(₹ in crore)"**, printed at the top right of page 1 (and, per the inspector, on every trend page). Values have two
+**"(₹ in crore)"**, printed at the top right of page 1 (and, per the first pass, on every trend page). Values have two
 decimals.
 
 ### Period ✅✅
@@ -103,7 +103,7 @@ Treasury/Pay & Accounts Office accounts were due, received and excluded that mon
   downloads as an Excel file with **no login** (one redirect, HTTP 200, a genuine `.xlsx`).
 - It has **18 sheets mirroring the 18 PDF pages** (`SUMMARY`, `EXCLUTION` [sic], `Item No 1` … `Item No 8`), with the
   same title, status line, unit and headings.
-- Per the inspector, every number printed in the PDF appears in the sheet (one rounding edge case), the sheet stores
+- Per the first pass, every number printed in the PDF appears in the sheet (one rounding edge case), the sheet stores
   unrounded values and formulas, and its modification time is minutes before the PDF's creation time — i.e. it is the
   **source workbook** of the PDF.
 - Caution: it is a live, editable Google file, so it could change after publication. We must store a fingerprinted

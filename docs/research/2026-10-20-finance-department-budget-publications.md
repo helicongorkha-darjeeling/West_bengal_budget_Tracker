@@ -3,13 +3,13 @@
 - **Date:** 2026-10-20
 - **Question:** What are the budget publications — which period columns, units, accounting status and structure do they
   have — and which could feed (a) headline budget-versus-spending comparisons and (b) a department explorer?
-- **Method:** I downloaded **8 of the 29 files** linked from the 2026-27 listing (seven general documents — BP-1, 3, 4, 5,
-  6, 7, 9 — and one Demands for Grants volume, BP-11), checked sizes with `HEAD` first, hashed them, counted pages, scanned
+- **Method:** **8 of the 29 files** linked from the 2026-27 listing were downloaded (seven general documents — BP-1, 3, 4, 5,
+  6, 7, 9 — and one Demands for Grants volume, BP-11), sizes were checked with `HEAD` first, and the files were hashed, page-counted and scanned
   **every page's text** for unit statements and column headings, and **read the covers and sample data pages as rendered
   images**. The tools are in [`tools/`](tools/).
 - **Evidence levels:** ✅ observed first-hand (text layer or counts) · 👁 also read from a rendered page image. This
-  note has a **single observer**: no independent verifier has re-checked it yet (the multi-agent verifier was not
-  available in this session).
+  note has a **single observer**: no independent verifier has re-checked it yet (the planned verification step was
+  not available in this session).
 - **No financial figures are quoted.** Number-format examples are marked *illustrative*; cross-check results are reported
   as verdicts only.
 
@@ -104,7 +104,7 @@ must be built (and may change between years)** before a department explorer can 
 
 ### The budget's actuals agree with the monthly closing figures ✅ (reproducible)
 
-I compared the state-level **"Actuals 2024-2025"** in **BP-9** with the monthly report's **"MARCH(Sy), 2025"** edition (the closing
+The state-level **"Actuals 2024-2025"** in **BP-9** were compared with the monthly report's **"MARCH(Sy), 2025"** edition (the closing
 provisional position for 2024-25) using [`tools/compare_bp9_mki.py`](tools/compare_bp9_mki.py). Verdicts only:
 
 | Row | Result |
