@@ -10,7 +10,8 @@ Which official sources we use, what we have actually inspected, and what still n
 
 Detailed evidence for each inspection lives in [`docs/research/`](research/).
 
-_Last updated: 2026-10-20 (listing pages and Monthly Key Indicators inspected; other documents in progress)._
+_Last updated: 2026-10-20 (listing pages, Monthly Key Indicators, Finance Accounts / Accounts at a Glance and the main
+Finance Department budget publications inspected; Appropriation Accounts and the remaining budget volumes still to do)._
 
 ---
 
@@ -45,12 +46,31 @@ _Last updated: 2026-10-20 (listing pages and Monthly Key Indicators inspected; o
   must be confirmed from the volumes themselves.
 - No API was visible on the page; documents are published as PDF files.
 
+### ✅ Observed — 2026-27 budget publications (June 2026), 8 of 29 files (2026-10-20, single observer)
+
+Evidence: [`research/2026-10-20-finance-department-budget-publications.md`](research/2026-10-20-finance-department-budget-publications.md)
+(sizes, SHA-256, page counts; every page text-scanned; covers and sample data pages read as images). Not yet re-checked
+by a second observer.
+
+- **Which BP is which:** the covers settle the listing page's ambiguity — each title follows its own "BP-n" link.
+  BP-1 "Annual Financial Statement" (headed "Civil Budget Estimate" inside), BP-3 "Details of Department Wise Demands for
+  Grants", BP-4 receipts under the Consolidated Fund, BP-5 Contingency Fund and Public Account, BP-6 guarantees and
+  financial trend, BP-7 public sector undertakings, BP-9 "Budget at a Glance", BP-11 "Detailed Demands for Grants".
+- **Period columns:** Actual 2024-2025 · Budget Estimate 2025-2026 · Revised Estimate 2025-2026 · Budget Estimate
+  2026-2027. A budget for year *Y* shows actuals for *Y−2*.
+- **Accounting status of "Actual":** **not stated** (no "provisional" or "audited" wording on any page searched).
+- **Units differ by table:** thousand of rupees, crore, lakh and whole rupees; BP-4 and BP-6 mix units inside one document.
+- **Department vs grant:** BP-3 is by department (58, with two-letter codes); BP-11 onward by Demand number, gross with
+  recoveries deducted. No stated mapping between the two.
+- **The budget's 2024-25 actuals equal the monthly March(Sy) 2025 closing figures** for revenue receipts, revenue
+  expenditure, capital expenditure and loans and advances; the two documents' "total expenditure" differ by exactly
+  loans and advances plus repayment of loans (reproducible: `research/tools/compare_bp9_mki.py`).
+
 ### ⏳ Pending (document-level inspection)
 
-- The printed title, financial year, units and column headings of each general publication.
-- Which documents contain actuals, for which year, and their accounting status as printed.
-- The structure of a Detailed Demands for Grants volume (level of detail, columns, units).
-- Whether older years and the interim budgets can be listed reliably by reproducing the year selection.
+- BP-10, BP-12 to BP-31, the budget speeches, the fiscal policy statement, and the **interim** 2026-27 set.
+- Earlier years, and whether the year-selection form post can be reproduced with plain HTTP requests.
+- A second observer's check of the observations above.
 
 ## Source B — Office of the Principal Accountant General (A&E), West Bengal (CAG of India)
 
@@ -102,26 +122,57 @@ Items marked ✅✅ there were observed by an inspector and independently re-che
   copy and reconcile it against the PDF.
 - **Text layer:** present in every PDF checked; `pdftotext -table` keeps rows aligned, `-layout` does not.
 
+### ✅ Verified by inspection — Finance Accounts and Accounts at a Glance, 2020-21 (2026-10-20)
+
+Evidence: [`research/2026-10-20-finance-accounts-and-accounts-at-a-glance.md`](research/2026-10-20-finance-accounts-and-accounts-at-a-glance.md).
+An inspector's findings, then re-checked by re-downloading the files (size and SHA-256 identical) and **rendering the
+pages to images and reading them**. The summary below uses only what was re-checked.
+
+- **Availability:** listed only in the **Archive** view of the page — Finance Accounts 19 files (2009-10 to 2020-21),
+  Accounts at a Glance 12, Appropriation Accounts 13, "FA&AA data" none. **The latest year listed is 2020-21**; nothing
+  for 2021-22 or later is listed.
+- **Accounting status:** the Finance Accounts carry a CAG certificate ("true and fair view", dated 10 DEC 2021, with
+  numbered observations) and were laid before the State Legislature on 25.03.2022. The Accounts at a Glance is based on
+  those certified accounts and is not itself certified.
+- **Units:** Finance Accounts **Volume I "(₹ in Crore)"**, **Volume II "(₹ in Lakh)"** — a factor of 100 — and the
+  Accounts at a Glance "(₹ in Crore)".
+- **Number format:** statement tables print commas after every two digits (`12,34,56.78` = 123,456.78; illustrative).
+- **"Total expenditure" is defined differently:** monthly reports exclude loans and advances; the Accounts at a Glance
+  includes them.
+- **Net vs gross:** Finance Accounts expenditure is net of recoveries; the Appropriation Accounts and Demands for Grants
+  are gross.
+- **Text layer:** the 2020-21 Finance Accounts use a glyph-shifted encoding (characters stored 29 code points low);
+  the Accounts at a Glance is clean.
+
 ### ⏳ Pending (document-level inspection)
 
-- The workflow's adversarial verifier for the MKI findings (the key claims above were re-checked independently).
-- Available years, units, certification text and table structure of the Finance Accounts, Appropriation Accounts and
-  Accounts at a Glance; what "FA&AA data" contains.
+- **Appropriation Accounts** — the expected source of grant-wise (gross) expenditure. Not yet opened.
+- Whether newer Finance Accounts exist anywhere official; what the empty "FA&AA data" tab is for.
+- The finance-accounts claims marked ✅ (inspector only) in the research note.
 
 ---
 
 ## ❓ Open questions
 
-1. Which printed title belongs to each BP number on the Finance Department page?
-2. What units do the budget documents and annual accounts use (thousand, lakh or crore of rupees)? (MKI: crore — answered.)
+1. Which printed title belongs to each BP number on the Finance Department page? (Answered from the covers for BP-1, 3,
+   4, 5, 6, 7, 9 and 11; BP-10 and BP-12 onward not examined.)
+2. What units do the budget documents use (thousand, lakh or crore of rupees)? (Answered for the monthly reports and
+   annual accounts: crore, except Finance Accounts Volume II, which is lakh. Budget documents: still to check.)
 3. What do "Pre/P" and "Sup/Sy" officially stand for? (The documents show that the "Sy" edition's totals run to
    "March(Final)", i.e. it closes the year's provisional accounts — but the abbreviations are not defined anywhere.)
 4. Which version is authoritative when an MKI is listed both as a PDF and as a live Google Sheet? (June 2026 sheet:
    public and mirrors the PDF — answered for that one file only.)
 5. How do the 2026-27 interim budget and the full 2026-27 budget differ in what they present?
 6. Which document gives department-wise (grant-wise) **actual** expenditure in a form we can reconcile with budget
-   figures? (Not the MKI — it has no department breakdown.)
+   figures? (Not the MKI, and not the Finance Accounts statements — most likely the Appropriation Accounts, not yet
+   inspected.)
 7. Why were no July–September 2026 MKIs listed on 2026-10-20?
+8. Are Finance Accounts or Accounts at a Glance for **2021-22 onwards** published anywhere official? None is listed
+   on the regional page or the central CAG portal's West Bengal view (archive included) as of 2026-10-20.
+9. What is the accounting status of the "Actual 2024-2025" columns in the budget documents? They match the monthly
+   closing figures, but nothing printed says "provisional" or "audited".
+10. How do the Finance Department's departments map to Demand numbers (grants), and is the mapping stable across years?
+11. Is BP-3's no-decimal-point number format (last two digits as decimals) consistent on all 397 pages?
 
 ## Candidates not yet inspected (no claims made)
 
@@ -141,4 +192,7 @@ unless it is added above as an inspected official source.
 | 2026-10-20 07:58 | Finance Department listing page | `curl` download, link extraction | HTML saved; SHA-256 `fb29a942c72a3e84ac4293e797e5dc335e65c1cdb1d018673d68427c71ab150a` (page content changes with each load because of ASP.NET state, so the hash identifies our copy only) |
 | 2026-10-20 07:58 | CAG / PAG (A&E) West Bengal listing page | `curl` download, link extraction | HTML saved; SHA-256 `74bbb7f0b5eb4d9a571e8af10ffd6b10d7961cc6ffc6483548e06d483494a6ce` |
 | 2026-10-20 08:05–08:45 | Monthly Key Indicators: 6 PDFs, 1 Google Sheet, main and archive listings | Inspector agent, then independent re-download and re-check of key claims | [`research/2026-10-20-monthly-key-indicators.md`](research/2026-10-20-monthly-key-indicators.md) |
-| 2026-10-20 (in progress) | Finance/Appropriation Accounts, Accounts at a Glance; Finance Department budget documents | Multi-agent inspection with independent adversarial verification | Will be recorded in `docs/research/` |
+| 2026-10-20 08:05–08:42 and 13:58 | Finance Accounts Vol I and II 2020-21, Accounts at a Glance 2020-21, FA 2019-20 sample; archive listings | Inspector agent (08:xx); my own re-download, page counts, and page-image reading (13:58) | [`research/2026-10-20-finance-accounts-and-accounts-at-a-glance.md`](research/2026-10-20-finance-accounts-and-accounts-at-a-glance.md) |
+| 2026-10-20 13:5x | Finance Department: HTTP status and size of all 29 PDFs linked from the 2026-27 page | `curl -I` for each file | All returned HTTP 200 `application/pdf`; 25 files are 0.6–3.5 MB, the largest 44 MB; total about 204 MB |
+| 2026-10-20 14:01–14:09 UTC | Finance Department: BP-1, 3, 4, 5, 6, 7, 9 and one Demands for Grants volume (BP-11) | My own download, SHA-256, page counts, every-page text scan, page-image reading, cross-check against the monthly report | [`research/2026-10-20-finance-department-budget-publications.md`](research/2026-10-20-finance-department-budget-publications.md) |
+| not yet done | Appropriation Accounts; BP-10 and BP-12 to BP-31; interim 2026-27 set; earlier years | — | — |

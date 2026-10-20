@@ -104,9 +104,47 @@ Format: **Decision** · **Why** · **Trade-off / revisit when**.
 - **Open:** the owner should confirm the project's organisational identity (individual, company or non-profit) so we
   can describe it accurately.
 
+## D-014 · 2026-10-20 · Python 3.15.0 accepted; project environment at `ingestion/.venv`
+
+- **Decision:** Use the Python 3.15.0 the owner installed, with a virtual environment inside `ingestion/` (git-ignored),
+  instead of asking for the 3.13 I had recommended.
+- **Why:** My worry was that a brand-new Python might lack prebuilt packages. We tested rather than assumed: pandas,
+  numpy, pdfplumber, openpyxl, pytest and pypdfium2 all installed as prebuilt wheels and import correctly. The one
+  failure ("DLL load failed … filename too long") came from a throwaway test folder buried in a very deep path, not from
+  Python 3.15.
+- **Trade-off / revisit when:** a later package has no 3.15 wheel — then install 3.13 or 3.14 alongside. Pin exact
+  versions when the first script is written.
+
+## D-015 · 2026-10-20 · Every stored total carries its list of components
+
+- **Decision:** A stored total must record which components it adds up and which publication's definition it follows.
+- **Why:** Official publications use the same label for different totals: the monthly reports' "Total Expenditure"
+  excludes loans and advances, while the annual Accounts at a Glance includes them. Comparing them silently would be
+  wrong.
+- **Trade-off:** a slightly richer data model, in exchange for never mixing definitions by accident.
+
+## D-016 · 2026-10-20 · "Audited" is never shown bare
+
+- **Decision:** Wherever an audited figure appears, link the CAG certificate and say it carries observations; record
+  which statement the figure came from.
+- **Why:** The 2020-21 certificate has numbered observations, and names statements prepared from information supplied by
+  the State Government. "Audited" does not mean "free of caveats".
+
+## D-017 · 2026-10-20 · Verify by looking, not only by extracting text
+
+- **Decision:** For every document we rely on, render the key pages (title, unit, status wording, table headers) to
+  images and read them, and record the page numbers.
+- **Why:** Text extraction misled us: some PDFs store characters shifted ("7DEOH" for "Table"), drop the rupee sign, and
+  `pdftotext` miscounts their pages. The monthly-report inspection could not catch such things; looking at the page can.
+- **Trade-off:** slower, so we limit it to the pages that determine meaning (not every table row — those are reconciled by
+  arithmetic instead).
+
 ## Open decisions (need the owner)
 
-- **Licence** for the code and for the derived data. Until chosen, others may not legally reuse the code.
-- **Python installation** (needed for v0.2): recommended Python 3.13, 64-bit, from python.org (tick "Add to PATH").
+- **Licence for derived data and for how we credit the official sources.** (The code licence is decided: MIT — the
+  `LICENSE` file was created by the owner on GitHub on 2026-10-20, with the copyright holder shown as the GitHub
+  username `helicongorkha-darjeeling`. If you would rather show a real name or organisation there, change it in
+  that one file.)
+- ~~Python installation~~ — done by the owner on 2026-10-20; see D-014.
 - **Organisational identity** for the About text (see D-013).
 - **Domain name** and hosting account for launch (v1.0).

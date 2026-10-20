@@ -69,7 +69,23 @@ export const CURRENT_LEARNINGS: readonly Learning[] = [
   },
   {
     then: "We assumed a “total expenditure” figure meant all spending.",
-    now: "In the monthly report it means revenue plus capital expenditure; loans and advances are reported separately. Every total must say what it includes.",
+    now: "In the monthly report it means revenue plus capital expenditure; in the annual Accounts at a Glance it also includes loans and advances; in the budget documents it also includes the repayment of loans. Every total must say what it includes.",
+  },
+  {
+    then: "We expected audited yearly accounts to be available for recent years.",
+    now: "The latest audited annual accounts listed by the Accountant General are for 2020-21. For later years we can show provisional monthly figures only, and we will say so.",
+  },
+  {
+    then: "We expected every number to be printed in the same unit.",
+    now: "Official documents use whole rupees, thousands, lakh and crore, sometimes inside a single document, so the same amount can look a hundred or even a thousand times different. We record each table’s unit and convert only with tested code.",
+  },
+  {
+    then: "We did not know whether different official documents would agree with each other.",
+    now: "For 2024-25, the budget documents’ “actual” figures match the monthly reports’ closing figures for the main state-level rows once the definitions are lined up. That gives us an automatic cross-check.",
+  },
+  {
+    then: "We assumed budget documents say whether their “actual” figures are audited.",
+    now: "They do not say. We label them “not stated” rather than guess.",
   },
   {
     then: "We expected to extract every figure from PDF files.",

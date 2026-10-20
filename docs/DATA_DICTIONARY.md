@@ -18,7 +18,7 @@ particular document presents its figures, the document's own wording wins and is
 | **Revenue expenditure** | Spending that does not create assets: salaries, pensions, interest payments, subsidies, grants, day-to-day running and maintenance. | Shown as its own headline measure. |
 | **Capital expenditure** (capital outlay) | Spending that creates lasting assets, such as roads, buildings, irrigation works, and investments. | Shown as its own headline measure. |
 | **Loans and advances** | Money the State lends (for example to local bodies, public undertakings or its employees). | Recorded separately from capital outlay in government accounts. Whether a document's "total expenditure" includes it is taken from that document's own rows — never assumed. |
-| **Total expenditure** | The total printed by the source document. | We record the document's own definition (which rows it adds up) alongside the value. In the Monthly Key Indicators it is revenue + capital expenditure, excluding loans and advances (see source notes below). |
+| **Total expenditure** | The total printed by the source document. | We record the document's own definition (which rows it adds up) alongside the value. In the Monthly Key Indicators it is revenue + capital expenditure, **excluding** loans and advances; in the Accounts at a Glance it **includes** them; in the Budget at a Glance (BP-9) the capital block itself contains loans and advances **and repayment of loans**, so its total is larger still (see source notes below). **Never compare totals from different publications without checking their component lists.** |
 | **Charged vs voted** | *Charged* expenditure (for example interest payments) does not need the Legislative Assembly's vote; *voted* expenditure is authorised through Demands for Grants. | Appropriation Accounts report the two separately. |
 | **Gross vs net** | Gross expenditure is before deducting recoveries; net is after. | Always record which one the document prints. |
 
@@ -57,8 +57,10 @@ consecutive year-to-date figures. It is then labelled `derived` with its formula
 | **Year-to-date actual** | Spending recorded from 1 April to the end of the reporting month. | Provisional |
 | **Annual actual** | Spending for a complete year. Final figures come from the audited annual accounts. | Audited (when from the annual accounts) |
 
-Budget documents also print "actuals" for earlier years; we record which annual accounts those come from when the
-document says so.
+Budget documents also print "actuals". For a budget of year *Y* they show year *Y−2* (for example 2024-25 in the 2026-27
+budget), with the budget estimate and revised estimate for *Y−1* and the budget estimate for *Y*. The documents do not
+say how final those actuals are (status **not stated**), although for the state-level rows checked they equal the
+monthly reports' closing provisional figures.
 
 ## 5. Accounting basis
 
@@ -75,6 +77,7 @@ How final a figure is, **as stated by the source document** — never inferred b
 | **Estimate** | A plan or forecast from budget documents — not money spent. |
 | **Provisional** | Actual figures from monthly accounts that have not been audited yet and may be revised. |
 | **Audited** | Final full-year accounts certified by the Comptroller and Auditor General of India (CAG). |
+| **Not stated** | The document does not say how final its actual figures are — for example the "Actual" columns in the Finance Department's budget documents, which carry no "provisional" or "audited" wording. We record "not stated" and never fill the gap by guessing. |
 
 ## 7. Unit
 
@@ -84,9 +87,13 @@ How final a figure is, **as stated by the source document** — never inferred b
 
   | Unit | Multiplier to rupees |
   | --- | --- |
+  | whole rupees ("Rs.") | 1 |
   | thousand | 1,000 |
   | lakh | 1,00,000 (100 thousand) |
   | crore | 1,00,00,000 (10 million = 100 lakh) |
+
+- **The unit belongs to the table, not the document.** Some documents mix units (the Finance Accounts' two volumes; the
+  Finance Department's BP-4 and BP-6). Record the unit for every table.
 
 - **Display unit:** ₹ crore by default. Indian digit grouping is used for rupee amounts (1,00,000).
 - **Rounding:** compute on unrounded values; round only when displaying, and state the rounding (for example
@@ -137,7 +144,7 @@ figure
   value_as_printed      text, exactly as printed
   unit_as_printed       text, exactly as printed
   value_rupees          number (normalised)
-  accounting_status     estimate | provisional | audited   (as stated by the source)
+  accounting_status     estimate | provisional | audited | not_stated   (as stated by the source)
   verification_status   verified | unverified | needs_review | corrected
   source                → the provenance fields in §8
   verification_record   who checked, when, which page, outcome
@@ -161,3 +168,30 @@ How each official document presents these concepts is recorded, with evidence, i
 | Total expenditure | Row 7 "Total Expenditure (4+ 5)" = revenue + capital expenditure. **Loans and advances are excluded** — they are row 8, "Loans and Advances Disbursed". |
 | March | Two editions: "MARCH(P)" (trend row "March(Pre)") and a later "MARCH(Sy)" whose totals run to "March(Final)". Abbreviations not defined in the documents. |
 | Department detail | None — state-level totals and sectors only. |
+
+### Finance Accounts and Accounts at a Glance (PAG (A&E) West Bengal) — verified 2026-10-20 for 2020-21
+
+| Concept | How these documents present it |
+| --- | --- |
+| Accounting status | Finance Accounts: CAG certificate ("true and fair view") → our status **Audited**; link the certificate's numbered observations wherever an audited figure is shown. The certificate names statements prepared from information supplied by the State Government (9, 17(b)–(c), 19(1), 20, notes to 14, Appendices IV and IX), so record which statement a figure comes from. Accounts at a Glance: based on the certified accounts, **not itself certified**; the certified accounts prevail if they differ. |
+| Reporting period | Full financial year (year ending 31 March) — annual, not year-to-date. |
+| Unit | Finance Accounts Volume I: "(₹ in Crore)". **Volume II: "(₹ in Lakh)" — 100 times smaller a unit.** Accounts at a Glance: "(₹ in Crore)", rounded to whole numbers. |
+| Number format | Statement tables print commas after every two digits left of the decimal point (illustrative, not a real figure: `12,34,56.78` = 123,456.78). Strip all commas before parsing. |
+| Total expenditure | Accounts at a Glance: total revenue + total capital expenditure + **loans and advances**. Finance Accounts show revenue expenditure, capital expenditure, loans and advances, and repayment of public debt as separate lines. Head-of-account coding: major heads 2011–3606 are revenue expenditure; 4046–7810 are capital expenditure "including Public Debt, Loans and Advances". |
+| Net vs gross | Finance Accounts expenditure is **net of recoveries**; Appropriation Accounts and Demands for Grants are **gross**. |
+| Budget comparison | Finance Accounts statements have no budget columns. The Accounts at a Glance compares actuals with Budget Estimates and with GSDP. |
+| Latest year listed | 2020-21 (as of 2026-10-20). |
+
+### Finance Department budget publications, 2026-27 (June 2026) — observed 2026-10-20 (single observer)
+
+Evidence: [`research/2026-10-20-finance-department-budget-publications.md`](research/2026-10-20-finance-department-budget-publications.md).
+
+| Concept | How these documents present it |
+| --- | --- |
+| Figure kinds and periods | Four columns throughout: **Actual 2024-2025**, **Budget Estimate 2025-2026**, **Revised Estimate 2025-2026**, **Budget Estimate 2026-2027**. |
+| Accounting status | **Not stated** for the "Actual" columns — no "provisional" or "audited" wording. Estimates are estimates. |
+| Unit | Per table: thousand of rupees (BP-1, BP-3, BP-4, BP-5, BP-7); crore (BP-9, and some BP-4 pages); crore **and** lakh (BP-6); **whole rupees** (Detailed Demands for Grants, BP-11 onward). |
+| Number format | BP-11: whole rupees, normal Indian grouping. BP-3: no decimal point; on the page checked the last two digits behave as decimals with commas every two digits (illustrative: `12,34,56` = 1,234.56) — **to be confirmed on more pages**. |
+| Total expenditure | Budget at a Glance: revenue + capital, where the capital block **includes loans and advances and repayment of loans**. For 2024-25 its actuals equal the monthly closing figures row by row, and its total exceeds the monthly report's total by exactly loans and advances plus repayment of loans. |
+| Gross vs net | Demands for Grants are **gross**: Gross Expenditure, then "Deduct – Recoveries", then Net Expenditure; Voted and Charged shown separately. |
+| Department vs grant | BP-3 is by **department** (58, each with a two-letter code); BP-11 onward are by **Demand number** (grant). The mapping between them is not stated in the documents examined and must be built. |

@@ -9,6 +9,7 @@ import {
   CalculatorIcon,
   ClockIcon,
   HistoryIcon,
+  InfoIcon,
   PendingIcon,
   ReviewIcon,
   ShieldIcon,
@@ -34,6 +35,7 @@ const ACCOUNTING_LOOK: Record<AccountingStatus, Look> = {
   estimate: { Icon: CalculatorIcon, iconClass: "text-accent" },
   provisional: { Icon: ClockIcon, iconClass: "text-accent" },
   audited: { Icon: ShieldIcon, iconClass: "text-accent" },
+  not_stated: { Icon: InfoIcon, iconClass: "text-ink-2" },
 };
 
 const chip =

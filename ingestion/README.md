@@ -4,8 +4,13 @@ This folder will hold the Python process that turns official publications into v
 from `web/` on purpose: only this side may ever hold database write credentials, and the public website only reads
 what this side has verified.
 
-**Status:** planned for milestone v0.2 (see `docs/ROADMAP.md`). Nothing here runs yet. Python is not installed on
-the development machine as of 2026-10-20.
+**Status:** planned for milestone v0.2 (see `docs/ROADMAP.md`). No pipeline code exists yet. The Python environment
+does: `ingestion/.venv` (git-ignored) with Python 3.15.0, pandas, pdfplumber, openpyxl, pytest and pypdfium2, created and
+import-tested on 2026-10-20. Pinned requirements will be committed when the first script is written.
+
+Set up from scratch (Windows, from this folder): `python -m venv .venv`, then
+`.venv\Scripts\python -m pip install pandas pdfplumber openpyxl pytest`. Run scripts that read downloaded files
+with `.venv\Scripts\python -I script.py <paths>`.
 
 Planned steps, each re-runnable and deterministic:
 

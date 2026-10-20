@@ -55,7 +55,7 @@ export const FIGURE_KIND_ORDER: readonly FigureKind[] = [
 ];
 
 /** How final a figure is, as stated by the government document itself. Never inferred by us. */
-export type AccountingStatus = "estimate" | "provisional" | "audited";
+export type AccountingStatus = "estimate" | "provisional" | "audited" | "not_stated";
 
 export const ACCOUNTING_STATUSES: Record<AccountingStatus, Term> = {
   estimate: {
@@ -70,9 +70,14 @@ export const ACCOUNTING_STATUSES: Record<AccountingStatus, Term> = {
     label: "Audited",
     description: "Final full-year accounts certified by the Comptroller and Auditor General of India.",
   },
+  not_stated: {
+    label: "Not stated",
+    description:
+      "The document does not say how final its actual figures are, as with the “Actual” columns in budget documents. We show them as “not stated” and never call them provisional or audited.",
+  },
 };
 
-export const ACCOUNTING_STATUS_ORDER: readonly AccountingStatus[] = ["estimate", "provisional", "audited"];
+export const ACCOUNTING_STATUS_ORDER: readonly AccountingStatus[] = ["estimate", "provisional", "audited", "not_stated"];
 
 /** Our own check of a figure against its official source. Separate from AccountingStatus. */
 export type VerificationStatus = "verified" | "unverified" | "needs_review" | "corrected";

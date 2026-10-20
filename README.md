@@ -74,4 +74,6 @@ This is not an official website of the Government of West Bengal or the Comptrol
 
 ## Licence
 
-Not chosen yet — see the open decisions in [`docs/DECISIONS.md`](docs/DECISIONS.md).
+The code in this repository is released under the [MIT Licence](LICENSE). How derived datasets will be licensed, and
+what reuse terms the official publications themselves allow, is still an open question — see
+[`docs/DECISIONS.md`](docs/DECISIONS.md).

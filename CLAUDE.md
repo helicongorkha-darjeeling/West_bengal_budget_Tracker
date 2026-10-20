@@ -152,5 +152,18 @@ npm run check    # lint + type-check + production build
 
 ## Environment notes (2026-10-20)
 
-Windows 11 · Node 24.20.0 · npm 11.19.0 · Git 2.55. **Python is not installed yet** (needed from v0.2).
-npm 11 does not run package install scripts until approved; `unrs-resolver`'s script is pending and lint works without it.
+Windows 11 · Node 24.20.0 · npm 11.19.0 · Git 2.55 · **Python 3.15.0** (installed by the owner on 2026-10-20; the real
+interpreter is `%LOCALAPPDATA%\Python\pythoncore-3.15-64\python.exe`).
+
+- **Ingestion environment:** `ingestion/.venv` (git-ignored). Use `ingestion\.venv\Scripts\python.exe`. Installed and
+  import-tested on 2026-10-20: pandas 3.0.6, numpy 2.5.4, pdfplumber 0.11.10, openpyxl 3.1.5, pytest 9.1.1,
+  pypdfium2 5.14.0. Python 3.15 is brand new: if a future package has no prebuilt wheel for it, install Python 3.13 or
+  3.14 alongside (the Python install manager can do this) rather than compiling.
+- **Always run Python that reads downloaded files with `-I`**, and keep your scripts out of the download folders.
+- **Keep virtual environments at short paths.** Windows long paths are enabled, but a very deep folder still made a DLL
+  fail to load ("filename too long").
+- **No Poppler** (`pdftoppm`/`pdfinfo` missing). To *look at* a PDF page, render it with pypdfium2 and view the image;
+  `pdftotext` (xpdf) is available for text, and its page counts can be wrong for encoded files.
+- npm 11 does not run package install scripts until approved; `unrs-resolver`'s script is pending and lint works
+  without it.
+- Windows is in dark mode: headless-browser tests must set the colour scheme explicitly.

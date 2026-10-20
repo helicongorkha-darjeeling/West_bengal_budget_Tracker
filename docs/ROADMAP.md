@@ -22,17 +22,20 @@ Goal: a working, honest skeleton and a clear understanding of the official sourc
 
 Exit criteria:
 
-- [ ] `CLAUDE.md`, `README.md` and the docs set exist: `ROADMAP`, `PROJECT_LOG`, `DECISIONS`, `SOURCE_INVENTORY`,
+- [x] `CLAUDE.md`, `README.md` and the docs set exist: `ROADMAP`, `PROJECT_LOG`, `DECISIONS`, `SOURCE_INVENTORY`,
       `DATA_DICTIONARY`, `EVOLUTION`.
 - [ ] Both official sources have been inspected, with evidence (URLs, retrieval dates, SHA-256 of inspected files),
       and `SOURCE_INVENTORY.md` separates inspected/verified facts from open questions.
-- [ ] The website runs locally and shows: mission, empty metrics, reporting-period section, chart placeholder,
+      *Progress: PAG (A&E) monthly reports and Finance/Accounts-at-a-Glance done and re-checked; Finance Department
+      budget documents and the Appropriation Accounts still to inspect.*
+- [x] The website runs locally and shows: mission, empty metrics, reporting-period section, chart placeholder,
       department explorer placeholder, methodology and source transparency, and an informative empty state.
-- [ ] Zero fabricated figures, departments or statistics anywhere in the UI.
-- [ ] `npm run lint`, `npm run typecheck` and `npm run build` pass (0 errors).
-- [ ] Automated accessibility scan (axe-core) reports no serious or critical issues in light and dark mode; no
+- [x] Zero fabricated figures, departments or statistics anywhere in the UI. *(Checked 2026-10-20 by scanning the
+      served page: only version numbers, dates and step numbers; no monetary-looking values.)*
+- [x] `npm run lint`, `npm run typecheck` and `npm run build` pass (0 errors).
+- [x] Automated accessibility scan (axe-core) reports no serious or critical issues in light and dark mode; no
       horizontal scrolling at 375 px width.
-- [ ] Project log records the commands run, tests performed, failures and the next step.
+- [x] Project log records the commands run, tests performed, failures and the next step.
 
 ## v0.2 — First verified report
 
@@ -41,12 +44,18 @@ Goal: one official monthly report, extracted reproducibly, verified and shown wi
 Exit criteria:
 
 - [ ] Python installed; `ingestion/` has pinned dependencies (pandas, pdfplumber) and a README.
+      *Progress (2026-10-20): Python 3.15.0 installed and import-tested; `ingestion/.venv` created; pinned requirements
+      still to be committed with the first script.*
 - [ ] A script downloads one Monthly Key Indicators report and writes a manifest entry (URL, retrieval time,
       byte size, SHA-256).
 - [ ] The extraction script reproduces **100 % of the rows** of the report's main table into a CSV, with the unit and
       page recorded, and running it twice gives byte-identical output.
 - [ ] Reconciliation checks pass: every printed total equals the sum of its printed components within the
       document's precision. Any failure is reported, not hidden.
+- [ ] A cross-source check passes: for the same financial year, the state-level actuals in the budget documents
+      (Budget at a Glance) equal the monthly report's closing "March(Sy)" figures within printed precision, with the
+      differing definitions of "total expenditure" reconciled and shown. *(Prototype: `docs/research/tools/compare_bp9_mki.py`;
+      the 2024-25 comparison already passes by hand.)*
 - [ ] A human verification record exists for every figure shown (who, when, page checked).
 - [ ] The dashboard shows the four headline measures for that report from a committed, versioned data file, each with
       source link, page, unit, period, accounting status and verification status.
@@ -70,11 +79,20 @@ Exit criteria:
 
 Goal: add final, audited full-year figures and show how provisional figures changed after audit.
 
+*What we learned on 2026-10-20 (see `research/2026-10-20-finance-accounts-and-accounts-at-a-glance.md`):* the latest
+Finance Accounts listed by the PAG (A&E) are for **2020-21**; later years are not listed. So this milestone is piloted
+on 2020-21 and then repeated for any newer year that is published. The Finance Accounts also use a glyph-shifted text
+layer, two-digit comma grouping, and two volumes in different units (crore and lakh).
+
 Exit criteria:
 
-- [ ] The latest audited Finance Accounts summary figures are imported and verified.
-- [ ] For each year with both, the dashboard shows provisional (March, monthly accounts) vs audited values and the
-      difference, clearly labelled.
+- [ ] The official listing and the central CAG portal are re-checked for Finance Accounts newer than 2020-21, and the
+      result is recorded.
+- [ ] Audited full-year state-level figures for the latest listed year are imported and verified — the extraction
+      handles the shifted encoding, the comma format and both units, and every figure is checked against a rendered page.
+- [ ] For each year with both, the dashboard shows the closing provisional figures (the monthly "March(Sy)" edition) vs
+      audited values and the difference, with the differing definitions of "total expenditure" reconciled and labelled.
+- [ ] The site states clearly which years have no audited counterpart yet.
 
 ## v0.5 — Department explorer
 

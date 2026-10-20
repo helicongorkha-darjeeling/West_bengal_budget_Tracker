@@ -47,8 +47,9 @@ export const OFFICIAL_SOURCES: readonly OfficialSource[] = [
     name: "Budget Speech & Publications",
     url: "https://finance.wb.gov.in/Fin_New/Pages/Budget_Publication.aspx",
     provides:
-      "Annual budget documents: Budget Estimates, Revised Estimates and earlier years’ actuals, including department-wise Demands for Grants.",
-    inspection: "identified",
+      "Annual budget documents: Budget Estimates, Revised Estimates and actuals for two years earlier (their status is not stated), plus department-wise Demands for Grants, in several different units.",
+    inspection: "inspected",
+    inspectedOn: "2026-10-20",
   },
   {
     id: "pag-ae-wb-state-accounts",
@@ -57,7 +58,7 @@ export const OFFICIAL_SOURCES: readonly OfficialSource[] = [
     name: "State Accounts Report",
     url: "https://cag.gov.in/ae/west-bengal/en/state-accounts-report",
     provides:
-      "Monthly Key Indicators — unaudited, provisional monthly accounts in ₹ crore, published since April 2008 — and the annual Finance Accounts and Appropriation Accounts.",
+      "Monthly Key Indicators — unaudited, provisional monthly accounts in ₹ crore, published since April 2008 — and audited annual accounts (the latest Finance Accounts listed on 20 October 2026 are for 2020-21).",
     inspection: "inspected",
     inspectedOn: "2026-10-20",
   },
