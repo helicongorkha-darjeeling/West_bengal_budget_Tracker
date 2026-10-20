@@ -1,0 +1,34 @@
+# Root ignore rules. The web app has its own web/.gitignore as well.
+
+# Secrets — never commit real credentials. Commit only *.example templates.
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+
+# Node / Next.js (also covered in web/.gitignore)
+node_modules/
+.next/
+out/
+*.tsbuildinfo
+
+# Python (future ingestion pipeline)
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.pytest_cache/
+.ipynb_checkpoints/
+
+# Raw official downloads are large and re-downloadable. We commit a manifest
+# (URL, retrieval date, SHA-256) instead of the files themselves.
+data/raw/
+
+# OS / editor noise
+.DS_Store
+Thumbs.db
+desktop.ini
+.vscode/*
+!.vscode/extensions.json
+.idea/

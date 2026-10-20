@@ -1,0 +1,98 @@
+@import "tailwindcss";
+
+/*
+ * Design tokens. Colours are chosen by role, and every text/background pair
+ * meets WCAG 2.2 AA contrast in both light and dark mode (checked 2026-10-20).
+ * Status colours (good / warning / serious / critical) are reserved for
+ * verification state and always appear with an icon and a text label.
+ */
+:root {
+  color-scheme: light;
+  --page: #f6f5f1;
+  --surface: #fcfcfb;
+  --surface-2: #f0efea;
+  --ink: #0b0b0b;
+  --ink-2: #52514e;
+  --grid: #e1e0d9;
+  --baseline: #c3c2b7;
+  --line: rgb(11 11 11 / 0.1);
+  --line-strong: rgb(11 11 11 / 0.2);
+  --accent: #184f95;
+  --accent-strong: #104281;
+  --accent-soft: #e6f0fc;
+  --on-accent: #ffffff;
+  --focus: #2a78d6;
+  --good: #0ca30c;
+  --warning: #fab219;
+  --serious: #ec835a;
+  --critical: #d03b3b;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    color-scheme: dark;
+    --page: #0d0d0d;
+    --surface: #1a1a19;
+    --surface-2: #232321;
+    --ink: #f0efec;
+    --ink-2: #c3c2b7;
+    --grid: #2c2c2a;
+    --baseline: #383835;
+    --line: rgb(255 255 255 / 0.1);
+    --line-strong: rgb(255 255 255 / 0.2);
+    --accent: #86b6ef;
+    --accent-strong: #b7d3f6;
+    --accent-soft: #14243a;
+    --on-accent: #0d0d0d;
+    --focus: #3987e5;
+  }
+}
+
+@theme inline {
+  --color-page: var(--page);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-ink: var(--ink);
+  --color-ink-2: var(--ink-2);
+  --color-grid: var(--grid);
+  --color-baseline: var(--baseline);
+  --color-line: var(--line);
+  --color-line-strong: var(--line-strong);
+  --color-accent: var(--accent);
+  --color-accent-strong: var(--accent-strong);
+  --color-accent-soft: var(--accent-soft);
+  --color-on-accent: var(--on-accent);
+  --color-good: var(--good);
+  --color-warning: var(--warning);
+  --color-serious: var(--serious);
+  --color-critical: var(--critical);
+
+  /* System fonts: fast on low-end phones, no download, and full Bengali/₹ glyph coverage from the OS. */
+  --font-sans: system-ui, -apple-system, "Segoe UI", Roboto, "Noto Sans", "Helvetica Neue", Arial, sans-serif;
+}
+
+@layer base {
+  body {
+    background-color: var(--page);
+    color: var(--ink);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  :where(a, button, input, select, textarea, summary, [tabindex]):focus-visible {
+    outline: 2px solid var(--focus);
+    outline-offset: 2px;
+    border-radius: 2px;
+  }
+
+  /* Keep anchored section headings clear of the viewport edge. */
+  [id] {
+    scroll-margin-top: 1rem;
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    html {
+      scroll-behavior: smooth;
+    }
+  }
+}

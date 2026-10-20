@@ -1,0 +1,9 @@
+# Store text files with LF line endings for every platform (Windows editors handle LF fine;
+# Vercel builds on Linux). Prevents noisy CRLF/LF diffs.
+* text=auto eol=lf
+
+# Binary files we may add later.
+*.pdf binary
+*.png binary
+*.jpg binary
+*.xlsx binary
