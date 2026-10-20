@@ -5,6 +5,94 @@ Newest entry first. Never record a check that was not actually run.
 
 ---
 
+## 2026-10-21 (early hours, IST) — Session 3: review of an unofficial research file; CAG audit reports
+
+**Milestone:** v0.1 Foundation · **Status at end of entry:** nearly complete. Open: a second observer's check of the
+budget-document and audit-report findings, the Appropriation Accounts, the remaining budget volumes (BP-10, BP-12 to
+BP-31), the interim 2026-27 set, and listing pages 3–8 of the CAG audit reports. The planned four-lens review of the
+foundation has **not been run**.
+
+### 1. State on return
+
+- The development server started in session 2 (port 3000) had been stopped by the environment because the machine was
+  critically low on memory (588 MB free of 8 GB when checked). Nothing was left on the port; it was not restarted.
+- Git: `main` one commit ahead of GitHub (the session-2 commit; its message was reworded before pushing, the files are
+  identical), working tree clean.
+
+### 2. The input
+
+The owner supplied a research file ("West Bengal Budget Portal & Fiscal Flow Research.md"; AI-generated per the owner;
+446,069 bytes; SHA-256 `28e9de1a077c33453726e54fd7e3d4ed0f74a35fbeb88cfdb5e0bb604b1fbe94`) and asked for what matters in
+it to be refined and followed through. It was read in full (its tail is embedded chart images). Being unofficial, it was
+used for leads only (decision D-018). Findings are in
+[`research/2026-10-21-third-party-research-file-review.md`](research/2026-10-21-third-party-research-file-review.md); the
+most useful lead led to [`research/2026-10-21-cag-state-finances-audit-reports.md`](research/2026-10-21-cag-state-finances-audit-reports.md).
+
+### 3. Checks run and their actual results
+
+| Check | Method | Result |
+| --- | --- | --- |
+| Citations in the file | script over the "Works cited" list | 49 parsed; numbering complete |
+| Links (19:21–19:23 UTC) | header-only `curl`: 20 citations and 4 portal addresses | 15 × HTTP 200; **4 × 404** (the direct CAG file addresses — wrong host; the same file names exist on the delivery host); 2 × 403 (`doge.gov`); 3 no answer (both `gao.gov` names did not resolve through this machine's DNS but do through a public resolver, so that report is **not verified**; `wbfin.nic.in` timed out once) |
+| CAG documents | audit-report listing pages 1–2, seven report pages, nine PDFs: download, SHA-256, page counts, text dump of every page | all HTTP 200 and `%PDF-`; hashes in the CAG note |
+| Claims against the cited CAG chapters | 58 numbers searched in the three chapters the file cites | 46 printed as claimed · 5 printed but narrower than claimed (one scheme's amounts presented as the total of direct central transfers) · 1 in the previous year's report · 4 sums the file computed · 2 not found |
+| Other claims | text search and report pages | the treasury-rule numbers, the "Appendix VI" reference, the 16th Assembly's dissolution date, the two reports on penal recoveries from health-insurance companies, and the tabling date of Report No. 5 of 2025 — all found |
+| Pages read as images | four pages of the 2024-25 report rendered and read: cover, first page of Appendix 1.1, first page of Appendix 2.9, glossary | agree with the text layer; "(₹ in crore)" printed on both appendices |
+| Cross-check for 2024-25 | `compare_bp9_mki.py` with the audit report as fourth argument | revenue receipts, revenue expenditure, capital expenditure, loans and advances: **MATCH within one crore** against both the monthly "March(Sy) 2025" report and the budget's "Actual 2024-25"; the two-document mode gives the same verdicts as before |
+| `npm run check` (lint + type-check + production build) | run after the website edits | **exit 0** (about 55 s; routes `/`, `/_not-found`, `/icon.svg` prerendered as static) |
+| Zero-figure scan of the served page | every number in the visible text | 22 distinct numeric tokens (years, version numbers, step numbers, dates, "SHA-256", the publisher count); **0 monetary-looking patterns** |
+| axe-core scan of the production build, 1280 px and 375 px, light and dark | headless Edge over the DevTools protocol | **0 violations** in all four; no horizontal overflow (scroll width equals client width); desktop-light and phone-dark screenshots reviewed by eye |
+
+### 4. Changes made
+
+- New notes: `research/2026-10-21-cag-state-finances-audit-reports.md` and `research/2026-10-21-third-party-research-file-review.md`.
+- `research/tools/compare_bp9_mki.py` (optional fourth argument) and the tools README.
+- `docs/SOURCE_INVENTORY.md` (Source C, open questions, candidates, inspection log), `docs/DECISIONS.md` (D-018 to D-023;
+  D-014 reworded), `docs/DATA_DICTIONARY.md` (booked versus used, flow and stock, audit observations, notes on the audit
+  reports), `docs/ROADMAP.md` (v0.1 progress, v0.4, v0.5, backlog), `docs/EVOLUTION.md`, `CLAUDE.md` (rules 12 and 13, a
+  public-documents rule, commit-message style), `README.md`.
+- Website: a third source card and a three-column grid, updated and new "then and now" entries, the v0.4 summary and the
+  status date (`site.ts`, `evolution.ts`, `methodology.tsx`). No figures added.
+- Earlier docs were reworded into a neutral voice (this log, three research notes, a few lines elsewhere): who ran which
+  step is no longer stated; facts, hashes and evidence levels are unchanged.
+
+### 5. Failures, problems and corrections
+
+- The research file was too large to read in one call (size limit); it was read in parts, and its tail (embedded images)
+  was not read.
+- A first version of the report-id mapping was shifted by one place (the listing shows each link before its own title);
+  corrected by reading each report's own page for its file names and dates.
+- The first run of the extended cross-check allowed 0.5 crore for the audit report's whole-crore figures and flagged
+  capital expenditure as DIFFERENT (0.56 crore). The report's totals are sums of separately rounded parts, so up to 1 crore
+  is the honest allowance; the tolerance was changed and the check re-run (all rows match).
+- A suspicion that one statement in the file was misattributed (that the March 2023 deposit-account balance could not be
+  ascertained) was wrong — the 2022-23 chapter says exactly that. Recorded as passed.
+- Small errors in the new notes were corrected before committing: page ranges of two appendices, the number of report
+  pages opened (seven), and retrieval times (link checks 19:21–19:23 UTC; downloads 19:22–19:37 UTC).
+- Memory was tight (about 900 MB free of 8 GB) during the build and the browser checks; both completed. The test server on
+  port 3100 and the headless browser were stopped afterwards; nothing is left listening on 3100 or 9333.
+
+### 6. Git
+
+Five commits, all under the repository owner's identity. `git fetch` showed `origin/main` unchanged at `0d352a7`;
+`git push origin main` (no force) at the owner's request: `0d352a7..29394d6  main -> main`; `git ls-remote origin
+refs/heads/main` returned `29394d6…`.
+
+### Not tested / limits
+
+- Single observer throughout: nothing here has been re-checked by a second person.
+- Only two of the eight audit-report listing pages; the chapters of the 2024-25 report beyond the passages and tables
+  cited; the Finance Accounts for 2021-22 onwards (not seen).
+- The research file's portal, procurement and demographic claims were not verified.
+
+### Next step
+
+Decide with the owner: (a) finish v0.1 by inspecting the Appropriation Accounts and the remaining budget volumes and having
+the findings re-checked by a second observer, or (b) start **v0.2 — first verified report**. Also open: whether to ask the
+Accountant General (A&E) for the Finance Accounts and Appropriation Accounts for 2021-22 onwards.
+
+---
+
 ## 2026-10-20 (evening, IST) — Session 2: status check, Python, and the rest of the source inspection
 
 **Milestone:** v0.1 Foundation · **Status at end of entry:** nearly complete. Open: a second observer's check of the
