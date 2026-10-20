@@ -10,7 +10,8 @@ interface MeasureDefinition {
 const HEADLINE_MEASURES: readonly MeasureDefinition[] = [
   {
     label: "Total expenditure",
-    description: "All spending recorded for the reporting period, as totalled in the source document.",
+    description:
+      "Revenue plus capital expenditure for the reporting period, as totalled in the official monthly accounts. Loans and advances are reported separately.",
     unit: "₹ crore",
   },
   {

@@ -10,7 +10,7 @@ Which official sources we use, what we have actually inspected, and what still n
 
 Detailed evidence for each inspection lives in [`docs/research/`](research/).
 
-_Last updated: 2026-10-20 (listing-page inspection complete; document-level inspection in progress)._
+_Last updated: 2026-10-20 (listing pages and Monthly Key Indicators inspected; other documents in progress)._
 
 ---
 
@@ -79,11 +79,32 @@ _Last updated: 2026-10-20 (listing-page inspection complete; document-level insp
   file size as "(0.00 MB)", which is clearly a display fault, not the real size.
 - **March is published in two stages** each year, labelled "March(Pre)" and "March(Sup)" on the page.
 
+### ✅ Verified by inspection — Monthly Key Indicators documents (2026-10-20)
+
+Evidence, hashes and exact labels: [`research/2026-10-20-monthly-key-indicators.md`](research/2026-10-20-monthly-key-indicators.md).
+Items marked ✅✅ there were observed by an inspector and independently re-checked; the summary below uses only those.
+
+- **Coverage:** monthly reports from **April 2008 to June 2026** — 2021-22 onwards on the main page, 2008-09 to
+  2020-21 in the archive view (2008-09 and 2009-10 as Flash `.swf` files; PDFs from 2010-11).
+- **Accounting status as printed:** "(UNAUDITED PROVISIONAL FIGURES)" — the only status wording in each report.
+- **Unit as printed:** "(₹ in crore)", values to two decimals.
+- **Period:** page 1 is **year-to-date** ("Actuals upto JUNE 2026" = 1 April to 30 June 2026), compared with the same
+  year's **Budget Estimates** only — no Revised Estimates column.
+- **Structure:** an 11-item state-level table (receipts, revenue expenditure with interest, salaries, pension and
+  subsidy, capital expenditure, sector-wise expenditure, total expenditure, loans and advances, deficits).
+  **"Total Expenditure (4+ 5)" = revenue + capital expenditure; "Loans and Advances Disbursed" is a separate row.**
+  No department, grant or major-head breakdown.
+- **March:** the documents print "MARCH(P)" and "MARCH(Sy)" (the listing says "March(Pre)" and "March(Sup)"); the
+  abbreviations are not spelled out anywhere. The "Sy" edition's totals equal its trend row "March(Final)", so it
+  carries the year's closing provisional figures. The two editions must never be added together.
+- **Spreadsheet versions:** the June 2026 "Click Here" Google Sheet downloads as `.xlsx` without login and mirrors the
+  PDF page by page (same title, status, unit, headings). It is a live, editable file, so we must keep a fingerprinted
+  copy and reconcile it against the PDF.
+- **Text layer:** present in every PDF checked; `pdftotext -table` keeps rows aligned, `-layout` does not.
+
 ### ⏳ Pending (document-level inspection)
 
-- MKI structure: exact row labels, columns, unit, and the accounting-status wording printed on the document.
-- What "March(Pre)" and "March(Sup)" mean, from the documents themselves.
-- Whether the Google Sheets files are publicly accessible and how they relate to the PDFs.
+- The workflow's adversarial verifier for the MKI findings (the key claims above were re-checked independently).
 - Available years, units, certification text and table structure of the Finance Accounts, Appropriation Accounts and
   Accounts at a Glance; what "FA&AA data" contains.
 
@@ -92,12 +113,15 @@ _Last updated: 2026-10-20 (listing-page inspection complete; document-level insp
 ## ❓ Open questions
 
 1. Which printed title belongs to each BP number on the Finance Department page?
-2. What units does each document use (thousand, lakh or crore of rupees)?
-3. What do "March(Pre)" and "March(Sup)" mean, and which one closes the year's provisional accounts?
-4. Are the MKI Google Sheets public, stable and identical in content to the PDFs?
+2. What units do the budget documents and annual accounts use (thousand, lakh or crore of rupees)? (MKI: crore — answered.)
+3. What do "Pre/P" and "Sup/Sy" officially stand for? (The documents show that the "Sy" edition's totals run to
+   "March(Final)", i.e. it closes the year's provisional accounts — but the abbreviations are not defined anywhere.)
+4. Which version is authoritative when an MKI is listed both as a PDF and as a live Google Sheet? (June 2026 sheet:
+   public and mirrors the PDF — answered for that one file only.)
 5. How do the 2026-27 interim budget and the full 2026-27 budget differ in what they present?
 6. Which document gives department-wise (grant-wise) **actual** expenditure in a form we can reconcile with budget
-   figures?
+   figures? (Not the MKI — it has no department breakdown.)
+7. Why were no July–September 2026 MKIs listed on 2026-10-20?
 
 ## Candidates not yet inspected (no claims made)
 
@@ -116,4 +140,5 @@ unless it is added above as an inspected official source.
 | --- | --- | --- | --- |
 | 2026-10-20 07:58 | Finance Department listing page | `curl` download, link extraction | HTML saved; SHA-256 `fb29a942c72a3e84ac4293e797e5dc335e65c1cdb1d018673d68427c71ab150a` (page content changes with each load because of ASP.NET state, so the hash identifies our copy only) |
 | 2026-10-20 07:58 | CAG / PAG (A&E) West Bengal listing page | `curl` download, link extraction | HTML saved; SHA-256 `74bbb7f0b5eb4d9a571e8af10ffd6b10d7961cc6ffc6483548e06d483494a6ce` |
-| 2026-10-20 (in progress) | Document-level inspection of both sources | Multi-agent inspection with independent adversarial verification | Will be recorded in `docs/research/` |
+| 2026-10-20 08:05–08:45 | Monthly Key Indicators: 6 PDFs, 1 Google Sheet, main and archive listings | Inspector agent, then independent re-download and re-check of key claims | [`research/2026-10-20-monthly-key-indicators.md`](research/2026-10-20-monthly-key-indicators.md) |
+| 2026-10-20 (in progress) | Finance/Appropriation Accounts, Accounts at a Glance; Finance Department budget documents | Multi-agent inspection with independent adversarial verification | Will be recorded in `docs/research/` |

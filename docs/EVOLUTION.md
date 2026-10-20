@@ -35,6 +35,22 @@ holds the reasoning. The website's "How this tracker is evolving" section is the
 - On the Finance Department page, the layout makes it ambiguous which title belongs to which document.
   **Lesson: the web page is not the document** — titles, units and periods must be read from the files themselves.
 
+**About the monthly reports (documents, verified 2026-10-20 — details in `research/2026-10-20-monthly-key-indicators.md`):**
+
+- Then: we did not know whether official monthly figures existed. Now: **Monthly Key Indicators exist from April
+  2008 to June 2026**, printed as "(UNAUDITED PROVISIONAL FIGURES)", in "(₹ in crore)", year-to-date against the
+  year's Budget Estimates.
+- Then: we would have assumed "total expenditure" means all spending. Now: in these reports **"Total Expenditure"
+  is revenue + capital expenditure; loans and advances are a separate row.** Every total we show must say what it
+  includes.
+- Then: we expected to parse PDFs. Now: recent reports also come as **downloadable spreadsheets** that mirror the PDF.
+  Easier to extract — but a live file can change, so we will fingerprint our copy and reconcile it against the PDF.
+- Then: one report per month. Now: **March appears twice**; the later "MARCH(Sy)" edition carries the year's closing
+  provisional figures (its totals equal the "March(Final)" trend row). Never add the two together.
+- Then: file names looked like reliable labels. Now: they are not (a file named "…23-24" is the April 2024 report);
+  the printed title is the key.
+- The monthly reports have **no department breakdown** — the department explorer will need other documents.
+
 **About the tools:**
 
 - Node.js 24, npm 11 and Git 2.55 were present; **Python was not** — the extraction pipeline has to wait for it.
@@ -50,11 +66,11 @@ and each section explains what will appear and where it will come from.
 
 ### Next
 
-- Finish the document-level inspection: units, row and column structure, and the printed provisional/audited wording.
-- **v0.2:** install Python; extract one Monthly Key Indicators report with a repeatable script; reconcile its totals;
-  verify it by hand; publish four headline figures with full provenance.
-- Question to answer next: when both "March(Pre)" and "March(Sup)" exist, which one is the year's closing
-  provisional figure — and how far does it differ from the audited Finance Accounts?
+- Finish the document-level inspection of the annual accounts and the budget documents.
+- **v0.2:** install Python; extract one Monthly Key Indicators report with a repeatable script (spreadsheet first,
+  reconciled against the PDF); verify it by hand; publish four headline figures with full provenance.
+- Question to answer next: how far do the closing provisional figures ("March(Sy)") differ from the audited Finance
+  Accounts for the same year?
 
 ---
 

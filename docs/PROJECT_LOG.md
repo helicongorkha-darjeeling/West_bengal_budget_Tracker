@@ -108,10 +108,44 @@ Edge.
 - Visual review found the reporting-period card stretching to its neighbour's height and the empty-value dashes too
   heavy → fixed.
 
+### 7. First push to GitHub
+
+At the owner's request: repository-local identity set (`git config user.name "helicongorkha-darjeeling"`,
+`git config user.email` = the owner's account email; global settings untouched), `.gitattributes` added (LF line
+endings), staged content scanned for secret patterns (none found; only documentation mentioning the words), then:
+
+```bash
+git commit   # 3129779 "Foundation (v0.1): project rules, docs, source inventory and empty dashboard" — 39 files
+git push -u origin main
+```
+
+Result: `* [new branch] main -> main`; `git ls-remote origin` shows `refs/heads/main` at `3129779`. Git Credential
+Manager already had credentials — no sign-in was needed.
+
+### 8. Monthly Key Indicators — document-level results
+
+The research workflow's first inspector (Monthly Key Indicators) finished: 6 PDFs, 1 Google Sheet and 3 listing views
+examined. Because the workflow runs only two agents at a time, its own verifier for this area was still queued, so the
+key claims were **re-checked independently** with fresh downloads:
+
+| Re-check | Result |
+| --- | --- |
+| June 2026 PDF: HTTP status, size, SHA-256, page count | 200 · 111,591 bytes · `607a2c8d…37bb1` · 18 pages — all match |
+| Title, status line, unit, column headers (page 1) | match: "(UNAUDITED PROVISIONAL FIGURES)", "(₹ in crore)", "Budget Estimates 2026-27", "Actuals upto JUNE 2026" |
+| Row definitions | "Total Expenditure (4+ 5)" = revenue + capital; "Loans and Advances Disbursed" separate — match |
+| March(P)/March(Sy) 2025 titles, hashes, pages | match (18 and 17 pages) |
+| March(Sy) total = "March(Final)" trend row; March(P) total = "March(Pre)" | both match; control (Sy vs "March(Pre)") does not match, as expected |
+| June 2026 Google Sheet | downloads without login: HTTP 200 after one redirect, real `.xlsx`, 18 sheets, same title/status/unit |
+| Archive view | 2008-09 to 2020-21; 2008-09 and 2009-10 are `.swf` files |
+
+Written up in `docs/research/2026-10-20-monthly-key-indicators.md`; inventory, data dictionary, evolution record and
+the website's source card, "Total expenditure" definition and "then and now" learnings updated accordingly. No
+financial figures were copied into the repository.
+
 ### Open at time of writing
 
-- Document-level source inspection (units, table structure, printed accounting status, March(Pre)/March(Sup)
-  meaning, Google Sheets accessibility, BP-number titles).
+- Document-level inspection of the Finance Accounts, Appropriation Accounts, Accounts at a Glance and the Finance
+  Department's budget documents (research workflow still running).
 
 ### Next step
 

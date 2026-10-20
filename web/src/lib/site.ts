@@ -57,8 +57,9 @@ export const OFFICIAL_SOURCES: readonly OfficialSource[] = [
     name: "State Accounts Report",
     url: "https://cag.gov.in/ae/west-bengal/en/state-accounts-report",
     provides:
-      "Monthly Key Indicators from the State’s monthly accounts, and the annual Finance Accounts and Appropriation Accounts.",
-    inspection: "identified",
+      "Monthly Key Indicators — unaudited, provisional monthly accounts in ₹ crore, published since April 2008 — and the annual Finance Accounts and Appropriation Accounts.",
+    inspection: "inspected",
+    inspectedOn: "2026-10-20",
   },
 ];
 

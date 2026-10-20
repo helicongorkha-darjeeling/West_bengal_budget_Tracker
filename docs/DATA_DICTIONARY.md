@@ -18,7 +18,7 @@ particular document presents its figures, the document's own wording wins and is
 | **Revenue expenditure** | Spending that does not create assets: salaries, pensions, interest payments, subsidies, grants, day-to-day running and maintenance. | Shown as its own headline measure. |
 | **Capital expenditure** (capital outlay) | Spending that creates lasting assets, such as roads, buildings, irrigation works, and investments. | Shown as its own headline measure. |
 | **Loans and advances** | Money the State lends (for example to local bodies, public undertakings or its employees). | Recorded separately from capital outlay in government accounts. Whether a document's "total expenditure" includes it is taken from that document's own rows — never assumed. |
-| **Total expenditure** | The total printed by the source document. | We record the document's own definition (which rows it adds up) alongside the value. |
+| **Total expenditure** | The total printed by the source document. | We record the document's own definition (which rows it adds up) alongside the value. In the Monthly Key Indicators it is revenue + capital expenditure, excluding loans and advances (see source notes below). |
 | **Charged vs voted** | *Charged* expenditure (for example interest payments) does not need the Legislative Assembly's vote; *voted* expenditure is authorised through Demands for Grants. | Appropriation Accounts report the two separately. |
 | **Gross vs net** | Gross expenditure is before deducting recoveries; net is after. | Always record which one the document prints. |
 
@@ -145,5 +145,19 @@ figure
 
 ## Source-specific notes
 
-How each official document presents these concepts (its units, periods, statuses and table layouts) is recorded,
-with evidence, in [`SOURCE_INVENTORY.md`](SOURCE_INVENTORY.md).
+How each official document presents these concepts is recorded, with evidence, in
+[`SOURCE_INVENTORY.md`](SOURCE_INVENTORY.md) and [`research/`](research/). Confirmed so far:
+
+### Monthly Key Indicators (PAG (A&E) West Bengal) — verified 2026-10-20
+
+| Concept | How the MKI presents it |
+| --- | --- |
+| Accounting status | Printed as "(UNAUDITED PROVISIONAL FIGURES)" → our status **Provisional**. |
+| Unit | "(₹ in crore)", two decimals → multiplier 1,00,00,000. |
+| Reporting period | Page 1: "Actuals upto *Month Year*" → **year-to-date** from 1 April. Trend pages: *Monthly* and *Progressive* (= year-to-date) values by month. |
+| Budget comparison | "Budget Estimates *YYYY-YY*" of the same year only; **no Revised Estimates**. "% of Actual to Budget Estimates — Current" = actual ÷ BE × 100 (derived). |
+| Revenue expenditure | Row 4 "Revenue Expenditure (a+b+c+d+e)", including interest, salaries/wages, pension and subsidy sub-rows. |
+| Capital expenditure | Row 5 "Capital Expenditure (a+b)". |
+| Total expenditure | Row 7 "Total Expenditure (4+ 5)" = revenue + capital expenditure. **Loans and advances are excluded** — they are row 8, "Loans and Advances Disbursed". |
+| March | Two editions: "MARCH(P)" (trend row "March(Pre)") and a later "MARCH(Sy)" whose totals run to "March(Final)". Abbreviations not defined in the documents. |
+| Department detail | None — state-level totals and sectors only. |
