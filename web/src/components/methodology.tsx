@@ -128,7 +128,7 @@ export function Methodology() {
           We use official government publications only. Our source inventory records what we
           have inspected and what still needs investigation.
         </p>
-        <ul className="mt-5 grid gap-4 md:grid-cols-2">
+        <ul className="mt-5 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
           {OFFICIAL_SOURCES.map((source) => (
             <SourceCard key={source.id} source={source} />
           ))}

@@ -11,7 +11,7 @@ export const SITE = {
   version: "0.1",
   phase: "Foundation",
   /** ISO date when the project-status facts on the page were last reviewed by hand. */
-  statusAsOf: "2026-10-20",
+  statusAsOf: "2026-10-21",
 } as const;
 
 export const PRINCIPLES = [
@@ -61,6 +61,17 @@ export const OFFICIAL_SOURCES: readonly OfficialSource[] = [
       "Monthly Key Indicators — unaudited, provisional monthly accounts in ₹ crore, published since April 2008 — and audited annual accounts (the latest Finance Accounts listed on 20 October 2026 are for 2020-21).",
     inspection: "inspected",
     inspectedOn: "2026-10-20",
+  },
+  {
+    id: "pag-audit1-wb-state-finances-audit-reports",
+    publisher:
+      "Office of the Principal Accountant General (Audit-I), West Bengal — Indian Audit & Accounts Department (CAG of India)",
+    name: "State Finances Audit Reports",
+    url: "https://cag.gov.in/ag1/west-bengal/en/audit-report",
+    provides:
+      "One report for each year from 2020-21 to 2024-25 (the latest was tabled on 25 July 2026): annual tables drawn from the audited accounts, grant-wise budget and spending tables, and the auditor’s comments on the accounts.",
+    inspection: "inspected",
+    inspectedOn: "2026-10-21",
   },
 ];
 

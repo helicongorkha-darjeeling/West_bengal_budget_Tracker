@@ -40,7 +40,7 @@ export const MILESTONES: readonly Milestone[] = [
     title: "Audited annual accounts",
     state: "planned",
     summary:
-      "Add audited full-year figures and show how much the provisional monthly numbers changed after audit.",
+      "Add audited full-year figures, from the Finance Accounts and the CAG’s State Finances Audit Reports, and show how much the provisional monthly numbers changed after audit.",
   },
   {
     version: "0.5",
@@ -73,7 +73,7 @@ export const CURRENT_LEARNINGS: readonly Learning[] = [
   },
   {
     then: "We expected audited yearly accounts to be available for recent years.",
-    now: "The latest audited annual accounts listed by the Accountant General are for 2020-21. For later years we can show provisional monthly figures only, and we will say so.",
+    now: "The Accountant General’s page lists audited accounts only up to 2020-21. The CAG’s State Finances Audit Reports, though, cover every year up to 2024-25 and carry tables drawn from the audited accounts. We will use them for the later years and label them as such.",
   },
   {
     then: "We expected every number to be printed in the same unit.",
@@ -81,7 +81,7 @@ export const CURRENT_LEARNINGS: readonly Learning[] = [
   },
   {
     then: "We did not know whether different official documents would agree with each other.",
-    now: "For 2024-25, the budget documents’ “actual” figures match the monthly reports’ closing figures for the main state-level rows once the definitions are lined up. That gives us an automatic cross-check.",
+    now: "For 2024-25, the budget’s “actual” figures, the monthly reports’ closing figures and the CAG’s audit report agree on the four main state-level rows, within the audit report’s whole-crore rounding, once the definitions are lined up. That gives us an automatic cross-check.",
   },
   {
     then: "We assumed budget documents say whether their “actual” figures are audited.",
@@ -94,5 +94,17 @@ export const CURRENT_LEARNINGS: readonly Learning[] = [
   {
     then: "We expected one report per month.",
     now: "March is reported twice — an early “March(P)” and a later “March(Sy)” that closes the year — so the two must never be added together.",
+  },
+  {
+    then: "We assumed “expenditure” always means money used for its purpose.",
+    now: "In the accounts, expenditure is money booked out of the Consolidated Fund. The CAG’s report says transfers into deposit accounts are counted as expenditure when they leave it, and could overstate expenditure if the money is not used within the year. We will call it reported expenditure and keep that caveat in view.",
+  },
+  {
+    then: "We assumed a balance and a year’s spending could be compared directly.",
+    now: "They are different kinds of figure: a balance at a date and an amount over a period. We will store and label them separately and never add them together.",
+  },
+  {
+    then: "We assumed a third-party research summary could simply guide us.",
+    now: "It pointed us to the right documents and most of its numbers matched them, but some were misread and its wording was stronger than the auditor’s. We use such summaries only for leads, and re-check every claim against the official page.",
   },
 ];
