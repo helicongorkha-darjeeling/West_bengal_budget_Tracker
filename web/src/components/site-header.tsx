@@ -5,8 +5,11 @@ const NAV_ITEMS = [
   { href: "#reporting-period", label: "Reporting period" },
   { href: "#spending", label: "Spending" },
   { href: "#departments", label: "Departments" },
+  { href: "#calculator", label: "Calculator" },
   { href: "#methodology", label: "Methodology" },
+  { href: "#goal", label: "Goal" },
   { href: "#evolution", label: "Evolution" },
+  { href: "#work-log", label: "Work log" },
 ] as const;
 
 export function SiteHeader() {

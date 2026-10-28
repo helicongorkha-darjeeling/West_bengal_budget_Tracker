@@ -127,6 +127,13 @@ holds the reasoning. The website's "How this tracker is evolving" section is the
 - Smooth scrolling made screenshots of in-page links capture blank frames; we switched to full-page captures through
   the browser's DevTools protocol, plus an automated accessibility scan (axe-core).
 
+**About checking our own work (2026-10-28):**
+
+- Then: "reproducible calculations" was a principle on paper. Now: the site has a calculator that uses exact decimals and
+  shows every step, and the project has its first automated unit tests. Writing them caught a wrong expectation of ours
+  (12,345 thousand is 1.2345 crore), which is exactly the kind of slip the tests exist for.
+- Then: the work log lived only in the repository. Now: a dated summary of every session, with its problems, is on the site.
+
 **About the product:** a working Next.js 16 website that is honest about having no data yet — every value is "—",
 and each section explains what will appear and where it will come from.
 

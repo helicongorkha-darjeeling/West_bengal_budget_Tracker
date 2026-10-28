@@ -145,7 +145,8 @@ Official PDF/XLSX ──► ingestion/ (trusted, maintainer-run) ──► verif
    - `docs/DECISIONS.md` — new decisions and why;
    - `docs/EVOLUTION.md` — then → now → next (what we believed, what we learned, what comes next);
    - `docs/ROADMAP.md` — milestone status;
-   - `web/src/lib/evolution.ts` — the public timeline, if a milestone changed.
+   - `web/src/lib/evolution.ts` — the public timeline, if a milestone changed;
+   - `web/src/lib/work-log.ts` — the public, dated work-log entry for the session (D-025).
 6. Commit with clear, plain-language messages (a short imperative subject and a brief body; no trailer lines). Push
    only when the owner asks.
 
@@ -155,7 +156,8 @@ Official PDF/XLSX ──► ingestion/ (trusted, maintainer-run) ──► verif
 cd web
 npm install      # first time only
 npm run dev      # development server → http://localhost:3000
-npm run check    # lint + type-check + production build
+npm test         # unit tests (Node's built-in runner)
+npm run check    # lint + type-check + unit tests + production build
 ```
 
 ## Environment notes (2026-10-20)
