@@ -1,3 +1,4 @@
+import { CalculatorSection } from "@/components/calculator-section";
 import { DepartmentExplorer } from "@/components/department-explorer";
 import { Evolution } from "@/components/evolution";
 import { HeadlineMetrics } from "@/components/headline-metrics";
@@ -6,6 +7,8 @@ import { Overview } from "@/components/overview";
 import { ReportingPeriod } from "@/components/reporting-period";
 import { Section } from "@/components/section";
 import { SpendingChartPlaceholder } from "@/components/spending-chart-placeholder";
+import { Vision } from "@/components/vision";
+import { WorkLog } from "@/components/work-log";
 
 export default function Home() {
   return (
@@ -22,8 +25,11 @@ export default function Home() {
         <SpendingChartPlaceholder />
       </Section>
       <DepartmentExplorer />
+      <CalculatorSection />
       <Methodology />
+      <Vision />
       <Evolution />
+      <WorkLog />
     </>
   );
 }

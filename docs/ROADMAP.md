@@ -64,6 +64,8 @@ Exit criteria:
 - [ ] The dashboard shows the four headline measures for that report from a committed, versioned data file, each with
       source link, page, unit, period, accounting status and verification status.
 - [ ] Unit tests cover unit conversion, Indian number formatting and derived percentages.
+      *Progress (2026-10-28): covered for the site calculator (`web/src/lib/calc.test.ts`, 17 tests); the pipeline's
+      own conversions will need theirs.*
 - [ ] An integrity test fails the build if any displayed figure lacks complete provenance.
 
 ## v0.3 — Monthly history in a database

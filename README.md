@@ -21,7 +21,8 @@ npm run dev
 
 Then open **http://localhost:3000** in your browser. Stop the server with `Ctrl + C`.
 
-To check the code: `npm run check` (lint + type-check + production build) inside `web/`.
+To check the code: `npm run check` (lint + type-check + unit tests + production build) inside `web/`. On a fresh
+clone, run `npx next typegen` once first so the type-check can find Next.js's generated route types.
 
 ## What is in this repository
 
@@ -68,6 +69,7 @@ researchers · Working software before ambitious features.
 - [Source inventory](docs/SOURCE_INVENTORY.md) — official sources: inspected vs still to investigate
 - [Data dictionary](docs/DATA_DICTIONARY.md) — expenditure, financial year, reporting period, units, statuses
 - [Evolution](docs/EVOLUTION.md) — what we knew then, what we know now, what comes next
+- [Vision](docs/VISION.md) — the goal, how it was chosen, and the road ahead
 
 ## Disclaimer
 

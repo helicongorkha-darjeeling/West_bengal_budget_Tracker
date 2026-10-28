@@ -202,6 +202,28 @@ Format: **Decision** · **Why** · **Trade-off / revisit when**.
 - **Trade-off / revisit when:** the report is one step away from the accounts and its structure changes every year, so each
   needs its own mapping. Revisit when Finance Accounts for 2021-22 onwards are found.
 
+## D-024 · 2026-10-28 · The calculator uses exact decimal arithmetic and shows its working
+
+- **Decision:** The site's calculator holds numbers as scaled integers (BigInt), never as floating point; rounds once, for
+  display, half away from zero; and returns inputs, formula, a spreadsheet formula and each step with the result. Unit
+  conversion only moves the decimal point.
+- **Why:** principle 5 (reproducible calculations). Floating point gives answers like 0.30000000000000004 that a reader
+  cannot reproduce by hand; showing the working lets anyone check the result without trusting us.
+- **Trade-off:** a small hand-written decimal module instead of a library; covered by unit tests.
+
+## D-025 · 2026-10-28 · The work log is public, on the site
+
+- **Decision:** `web/src/lib/work-log.ts` holds a dated, plain-English summary of every session, including problems and
+  corrections, shown in the "Work log" section. `docs/PROJECT_LOG.md` stays the full record; update both together.
+- **Why:** the owner asked for work and dates to be tracked on the site; it also applies principle 6 (corrections without
+  hiding mistakes) to our own process.
+
+## D-026 · 2026-10-28 · Unit tests run with Node's built-in test runner
+
+- **Decision:** `npm test` runs `node --test` over `src/lib/*.test.ts`, using Node's built-in TypeScript type stripping
+  (Node 22.18 or newer). No test framework was added.
+- **Why:** "add dependencies only when needed". Revisit if tests need a DOM or mocking.
+
 ## Open decisions (need the owner)
 
 - **Licence for derived data and for how we credit the official sources.** (The code licence is decided: MIT — the

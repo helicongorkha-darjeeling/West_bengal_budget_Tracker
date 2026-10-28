@@ -5,6 +5,63 @@ Newest entry first. Never record a check that was not actually run.
 
 ---
 
+## 2026-10-28 — Session 4: a checkable calculator, a public work log, and the project's goal
+
+**Milestone:** v0.1 Foundation (a site update; no milestone changed) · **Branch:** `v2-calculator-worklog`
+
+### 1. The ask
+
+The owner asked for a light, verifiable maths tool on the website, the work log and its dates on the website, and the
+project's goal and future direction, choosing the strongest version. "Verifiable" was read as: every calculation shows
+its inputs, formula and working, and can be redone by hand or in a spreadsheet.
+
+### 2. Changes made
+
+- `web/src/lib/calc.ts`: exact decimal arithmetic (integers scaled by powers of ten, no floating point), unit conversion
+  (rupees, thousand, lakh, crore), and five calculations: unit conversion, share of a total, change, a month from two
+  year-to-date totals, and reconciliation of printed parts against a printed total (allowance: half a unit of the last
+  printed place per component, the rule from session 2). Each returns inputs, formula, a spreadsheet formula, steps,
+  result and notes. Twelve arithmetic self-checks (synthetic identities, not budget figures).
+- `web/src/components/calculator.tsx`, `calculator-section.tsx`: the calculator on the page; inputs start empty; a
+  "Copy the full working" button; the self-checks re-run in the reader's browser.
+- `web/src/lib/work-log.ts`, `components/work-log.tsx`: a dated public summary of every session (this log in plain
+  English), including problems and corrections.
+- `web/src/lib/vision.ts`, `components/vision.tsx`, `docs/VISION.md`: the goal, success measures, horizons with what each
+  makes possible, and what the tracker will never become. The drafts considered are in `docs/VISION.md`.
+- Header navigation: Calculator, Goal and Work log added.
+- First automated unit tests: `web/src/lib/calc.test.ts`, run with `npm test` (Node's built-in test runner, no new
+  dependency). `npm run check` now runs the tests too. `tsconfig.json` gained `allowImportingTsExtensions` so the test can
+  import `./calc.ts` directly.
+
+No financial figures were added anywhere.
+
+### 3. Checks run and their actual results
+
+Run in a Linux cloud container (Node 22.22.0), not on the owner's Windows machine.
+
+| Check | Result |
+| --- | --- |
+| `npm test` | **17 of 17 pass** (6 suites) |
+| `npm run check` (lint + type-check + tests + production build) | **exit 0**; routes `/`, `/_not-found`, `/icon.svg` prerendered as static |
+| Calculator driven in headless Chromium: 1,234.5 as a share of 10,000 | 12.35 % (exact 12.345000), as expected |
+| Reconciliation in the browser: 1.23 + 4.56 against 5.81, 2 places | "Does not add up", as expected |
+| axe-core 4.11.0 on the production build, 1280 px and 375 px, light and dark | **0 violations** in all four; no horizontal overflow |
+| Screenshots of the calculator (desktop light, phone dark) and the goal section | reviewed by eye |
+
+### 4. Failures, problems and corrections
+
+- One expected value in the first draft of the tests was wrong: 12,345 thousand was written as 0.12345 crore; it is
+  1.2345 crore. Two tests failed; the expectation was corrected, the code was right.
+- On a fresh clone, `npm run typecheck` fails with `Cannot find name 'LayoutProps'` until Next.js has generated its route
+  types. `npx next typegen` (or one `next build` or `next dev`) fixes it; this was already true before this session.
+
+### Next step
+
+Unchanged: decide with the owner whether to finish v0.1's remaining source checks or start v0.2. The calculator's
+reconciliation rule is ready to be reused by the v0.2 pipeline's checks.
+
+---
+
 ## 2026-10-21 (early hours, IST) — Session 3: review of an unofficial research file; CAG audit reports
 
 **Milestone:** v0.1 Foundation · **Status at end of entry:** nearly complete. Open: a second observer's check of the
